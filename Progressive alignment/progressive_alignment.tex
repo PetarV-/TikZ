@@ -1,0 +1,19 @@
+\documentclass[crop, tikz]{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[font=\tt\scriptsize, grow=up, level 1/.style={sibling distance=30mm}, level 2/.style={sibling distance=20mm}]
+	\node[align=center](0){AC{-}{-}A\\CC{-}{-}A\\ACG-A\\A-GTA\\A-G-A}
+		child{node[align=center]{AGTA\\AG-A}
+			child{node{AGA}}
+			child{node{AGTA}}
+		}
+		child{node[align=center]{AC-A\\CC-A\\ACGA}
+			child{node{ACGA}}
+			child{node[align=center]{ACA\\CCA}
+				child{node{CCA}}
+				child{node{ACA}}
+			}
+		};
+\end{tikzpicture}
+\end{document}
