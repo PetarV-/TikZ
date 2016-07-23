@@ -1,0 +1,43 @@
+\documentclass[crop, tikz]{standalone}
+\usepackage{tikz}
+
+\usetikzlibrary{shapes, arrows}
+
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{block2} = [rectangle, draw, fill=blue!20, 
+    text width=4em, text centered, rounded corners, minimum height=1em]
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+\tikzstyle{line} = [draw, -latex']
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{echodrk}{HTML}{0099cc}
+\definecolor{drkorange}{HTML}{FF7c00}
+
+\begin{document}
+\begin{tikzpicture}[node distance=3cm, auto]
+	\node [block, color=red, fill=white] (cpu) {CPU};
+	\node [cloud, color=red, fill=white, below of=cpu] (intr) {Interrupts};
+	\node [block, color=drkorange, fill=white, right of=cpu] (mmu) {Memory controller};
+	\node [block, color=echodrk, fill=white, right of=mmu] (memo) {Memory \begin{tikzpicture}\node [block2, color=echodrk, fill=white] (rom) {ROM};\node [block2, node distance=1.3em, below of=rom, color=echodrk, fill=white] (ram) {RAM};\end{tikzpicture}};
+	\node [block, color=black, fill=white, right of=memo] (cartr) {Cartridge reader};
+	\node [block, color=mygreen, fill=white, below of=memo] (gpu) {GPU};
+	\node [cloud, color=mygreen, fill=white, right of=gpu] (sprites) {Sprites};
+	\node [block, color=blue, fill=white, left of=gpu] (io) {Input};
+    
+	\path [line,transform canvas={yshift=0.1em}] (cpu) -- (mmu);
+	\path [line,transform canvas={yshift=-0.1em}] (mmu) -- (cpu);
+	\path [line,transform canvas={yshift=0.1em}] (mmu) -- (memo);
+	\path [line,transform canvas={yshift=-0.1em}] (memo) -- (mmu);
+	\path [line] (io) -- (mmu);
+	\path [line] (mmu) -- (gpu); 
+	\path [line] (memo) -- (gpu);
+	\path [line, dashed] (intr) -- (cpu);
+	\path [line, dashed] (io) -- (intr);
+	\path [line, dashed] (gpu) edge [bend left] (intr);
+	\path [line] (cartr) -- (memo);
+	\path [line, dashed] (memo) -- (sprites);
+	\path [line, dashed] (sprites) -- (gpu);
+\end{tikzpicture}
+\end{document}

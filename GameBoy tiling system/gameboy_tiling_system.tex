@@ -1,0 +1,203 @@
+\documentclass[crop, tikz]{standalone}
+\usepackage{tikz}
+
+\usetikzlibrary{positioning, matrix}
+
+\tikzset{ 
+	table/.style={
+		matrix of nodes,
+		row sep=-\pgflinewidth,
+		column sep=-\pgflinewidth,
+		nodes={rectangle,draw=black,text width=0.05ex,align=center},
+		nodes in empty cells
+	},
+	texto/.style={font=\footnotesize\sffamily},
+	title/.style={font=\small\sffamily}
+}
+
+\tikzset{ 
+	tablet/.style={
+		matrix of nodes,
+		row sep=-\pgflinewidth,
+		column sep=-\pgflinewidth,
+		nodes={rectangle,draw=black,text width=2.25ex,align=center},
+		text height=1.625ex,
+		text depth=0ex,
+		nodes in empty cells
+	},
+	texto/.style={font=\footnotesize\sffamily},
+	title/.style={font=\small\sffamily}
+}
+
+\tikzset{ 
+	tablett/.style={
+		matrix of nodes,
+		row sep=-\pgflinewidth,
+		column sep=-\pgflinewidth,
+		nodes={rectangle, text width=0.05ex,align=center},
+		nodes in empty cells
+	},
+	texto/.style={font=\footnotesize\sffamily},
+	title/.style={font=\small\sffamily}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=0.5cm, auto]
+	\matrix[table] (t1) 
+	{
+		& & & & & & & \\
+		& & & & & & & \\
+		& & & & & & & \\
+		& & & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| \\
+		& & & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| \\
+		& & & |[fill=gray]| & |[fill=gray]| & & & \\
+		& & & |[fill=gray]| & |[fill=gray]| & & & \\
+		& & & |[fill=gray]| & |[fill=gray]| & & & \\
+	};
+	\node[above = 0.01cm of t1] (c1) {Tile 1};
+
+	\matrix[table, right =of t1] (t2) 
+	{
+		& & & & & & & \\
+		& & & & & & & \\
+		& & & & & & & \\
+		|[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| \\
+		|[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]|  \\
+		& & & & & & & \\
+		& & & & & & & \\
+		& & & & & & & \\
+	};
+	\node[above = 0.01cm of t2] (c2) {Tile 2};
+  	
+	\matrix[table, right =of t2] (t3) 
+	{
+		& & & & & & & \\
+		& & & & & & & \\
+		& & & & & & & \\
+		|[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & & & \\
+		|[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & & & \\
+		& & & |[fill=gray]| & |[fill=gray]| & & & \\
+		& & & |[fill=gray]| & |[fill=gray]| & & & \\
+		& & & |[fill=gray]| & |[fill=gray]| & & & \\
+	};
+	\node[above = 0.01cm of t3] (c3) {Tile 3};
+		
+	\matrix[tablet, below = 1cm of t1] (mp) 
+	{
+		\node (1) {\tt 1}; & \node (2) {\tt 2}; & \node (22) {\tt 2}; & \node (3) {\tt 3}; & \dots \\
+		\vdots & \vdots & \vdots & \vdots & $\ddots$ \\
+	};
+	\node[below = 0.01cm of mp] (c4) {Background map};
+
+	\draw [-stealth, thick] (1.north) -- (t1.south)	;
+	\draw [-stealth, thick] (2.north) -- (t2.south);
+	\draw [-stealth, thick] (22.north) -- (t2.south);
+	\draw [-stealth, thick] (3.north) -- (t3.south);	
+		
+	\matrix[tablett, rectangle, draw, scale=0.2, inner sep=0ex, nodes={inner sep=0.4ex}, below right = 1.1cm and -1.5cm of t2] (bg1)
+	{
+		& & & & & & & \\
+		& & & & & & & \\
+		& & & & & & & \\
+		& & & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| \\
+		& & & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| \\
+		& & & |[fill=gray]| & |[fill=gray]| & & & \\
+		& & & |[fill=gray]| & |[fill=gray]| & & & \\
+		& & & |[fill=gray]| & |[fill=gray]| & & & \\
+	};		
+
+	\matrix[tablett, rectangle, draw, scale=0.2, inner sep=0ex, nodes={inner sep=0.4ex}, right = 0cm of bg1] (bg2)
+	{
+		& & & & & & & \\
+		& & & & & & & \\
+		& & & & & & & \\
+		|[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| \\
+		|[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]|  \\
+		& & & & & & & \\
+		& & & & & & & \\
+		& & & & & & & \\
+	};
+
+	\matrix[tablett, rectangle, draw, scale=0.2, inner sep=0ex, nodes={inner sep=0.4ex}, right = 0cm of bg2] (bg3)
+	{
+		& & & & & & & \\
+		& & & & & & & \\
+		& & & & & & & \\
+		|[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| \\
+		|[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]|  \\
+		& & & & & & & \\
+		& & & & & & & \\
+		& & & & & & & \\
+	};
+
+	\matrix[tablett, rectangle, draw, scale=0.2, inner sep=0ex, nodes={inner sep=0.4ex}, right = 0cm of bg3] (bg4)
+	{
+		& & & & & & & \\
+		& & & & & & & \\
+		& & & & & & & \\
+		|[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & & & \\
+		|[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & & & \\
+		& & & |[fill=gray]| & |[fill=gray]| & & & \\
+		& & & |[fill=gray]| & |[fill=gray]| & & & \\
+		& & & |[fill=gray]| & |[fill=gray]| & & & \\
+	};
+
+	\node[below right = 0.01cm and 0.03cm of bg1] (c5) {Background};
+		
+	\draw [-stealth, white, ultra thick] (t1.south) -- (bg1.north)	;
+	\draw [-stealth, white, ultra thick] (t2.south) -- (bg2.north);
+	\draw [-stealth, white, ultra thick] (t2.south) -- (bg3.north);
+	\draw [-stealth, thick] (t1.south) -- (bg1.north);
+	\draw [-stealth, thick] (t2.south) -- (bg2.north);
+	\draw [-stealth, thick] (t2.south) -- (bg3.north);
+	\draw [-stealth, thick] (t3.south) -- (bg4.north);		
+	\matrix[tablett, rectangle, draw, scale=0.2, inner sep=0ex, nodes={inner sep=0.4ex}, below right = 1.1cm and -1.5cm of t2] (bg1)
+	{
+		& & & & & & & \\
+		& & & & & & & \\
+		& & & & & & & \\
+		& & & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| \\
+		& & & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| \\
+		& & & |[fill=gray]| & |[fill=gray]| & & & \\
+		& & & |[fill=gray]| & |[fill=gray]| & & & \\
+		& & & |[fill=gray]| & |[fill=gray]| & & & \\
+	};		
+
+	\matrix[tablett, rectangle, draw, scale=0.2, inner sep=0ex, nodes={inner sep=0.4ex}, right = 0cm of bg1] (bg2)
+	{
+		& & & & & & & \\
+		& & & & & & & \\
+		& & & & & & & \\
+		|[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| \\
+		|[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]|  \\
+		& & & & & & & \\
+		& & & & & & & \\
+		& & & & & & & \\
+	};
+
+	\matrix[tablett, rectangle, draw, scale=0.2, inner sep=0ex, nodes={inner sep=0.4ex}, right = 0cm of bg2] (bg3)
+	{
+		& & & & & & & \\
+		& & & & & & & \\
+		& & & & & & & \\
+		|[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| \\
+		|[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]|  \\
+		& & & & & & & \\
+		& & & & & & & \\
+		& & & & & & & \\
+	};
+
+	\matrix[tablett, rectangle, draw, scale=0.2, inner sep=0ex, nodes={inner sep=0.4ex}, right = 0cm of bg3] (bg4)
+	{
+		& & & & & & & \\
+		& & & & & & & \\
+		& & & & & & & \\
+		|[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & & & \\
+		|[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & |[fill=gray]| & & & \\
+		& & & |[fill=gray]| & |[fill=gray]| & & & \\
+		& & & |[fill=gray]| & |[fill=gray]| & & & \\
+		& & & |[fill=gray]| & |[fill=gray]| & & & \\
+	};
+		
+\end{tikzpicture}
+\end{document}

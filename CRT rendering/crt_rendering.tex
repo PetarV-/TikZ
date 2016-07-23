@@ -1,0 +1,60 @@
+\documentclass[crop, tikz]{standalone}
+\usepackage{tikz}
+
+\usetikzlibrary{positioning}
+
+\begin{document}
+\begin{tikzpicture}[node distance=4cm, auto]
+	\node (00) {};
+	\node [right of=00] (l1) {Line 1};
+	\node [right of=l1] (01) {};
+	\draw[-stealth, very thick] (00) -- (l1) -- (01);
+	\node [below =1cm of 00] (10) {};
+	\node [right of=10] (l2) {Line 2};
+	\node [right of=l2] (11) {};
+	\draw[-stealth, very thick] (10) -- (l2) -- (11);
+	\node [below =1cm of 10] (20) {};
+	\node [right of=20] (l3) {Line 3};
+	\node [right of=l3] (21) {};
+	\draw[-stealth, very thick] (20) -- (l3) -- (21);
+			
+	\node [below =1cm of 20] (30) {};
+	\node [right of=30] (l4) {};
+	\node [right of=l4] (31) {};
+			
+	\node [below =1cm of 30] (1430) {};
+	\node [right of=1430] (l143) {Line 143};
+	\node [right of=l143] (1431) {};
+	\draw[-stealth, very thick] (1430) -- (l143) -- (1431);
+	\node [below =1cm of 1430] (1440) {};
+	\node [right of=1440] (l144) {Line 144};
+	\node [right of=l144] (1441) {};
+	\draw[-stealth, very thick] (1440) -- (l144) -- (1441);
+			
+	\node [below=0.1cm of l1] (h1) {\textcolor{blue}{HBlank}};
+	\draw [thick, blue] (01) [bend left] to (h1);
+	\draw [-stealth, thick, blue] (h1) [bend right] to (10);
+			
+	\node [below=0.1cm of l2] (h2) {\textcolor{blue}{HBlank}};
+	\draw [thick, blue] (11) [bend left] to (h2);
+	\draw [-stealth, thick, blue] (h2) [bend right] to (20);
+			
+	\node [below=0.1cm of l3] (h3) {\textcolor{blue}{HBlank}};
+	\draw [thick, blue] (21) [bend left] to (h3);
+	\draw [-stealth, thick, blue, dashed] (h3) [bend right] to (30);
+			
+	\node [below=0.1cm of l4] (h4) {\textcolor{blue}{HBlank}};
+	\draw [thick, blue, dashed] (31) [bend left] to (h4);
+	\draw [-stealth, thick, blue] (h4) [bend right] to (1430);
+			
+	\node [below=0.1cm of l143] (h5) {\textcolor{blue}{HBlank}};
+	\draw [thick, blue] (1431) [bend left] to (h5);
+	\draw [-stealth, thick, blue] (h5) [bend right] to (1440);
+			
+	\path (1441) -- node[pos=0.47] (v) {\textcolor{red}{\bf VBlank}} (00);
+			
+	\draw [ultra thick, red] (1441) [bend right] to (v);
+	\draw [-stealth, red, ultra thick] (v) [bend left] to (00);
+				
+\end{tikzpicture}
+\end{document}
