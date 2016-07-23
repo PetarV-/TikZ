@@ -6,7 +6,7 @@ Combining the `braids` package with a custom macro to produce a neat visualisati
 
 ## Output
 
-![DNA](https://www.dropbox.com/s/myw62dq8m87lcfn/dna.png?dl=0)
+![DNA](https://www.dropbox.com/s/myw62dq8m87lcfn/dna.png?raw=1)
 
 ## Source
 
