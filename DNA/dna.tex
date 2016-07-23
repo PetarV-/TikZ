@@ -1,0 +1,42 @@
+\documentclass[crop, tikz]{standalone}
+\usepackage{tikz}
+\usepackage{braids}
+
+\newcommand{\bond}[3]{
+\draw[very thick, #1] (#3, 0) -- (#3, 0.35);
+\draw[very thick, densely dotted] (#3, 0.35) -- (#3, 0.65);
+\draw[very thick, #2] (#3, 0.65) -- (#3, 1);
+}
+
+\begin{document}
+\begin{tikzpicture}
+	\bond{red}{blue}{0.1}
+	\bond{red}{blue}{0.25}
+	\bond{red}{blue}{0.4}
+	\bond{blue}{red}{1.1}
+	\bond{blue}{red}{1.25}
+	\bond{blue}{red}{1.4}
+	\bond{red}{blue}{2.1}
+	\bond{red}{blue}{2.25}
+	\bond{red}{blue}{2.4}
+	\bond{blue}{red}{3.1}	
+	\bond{blue}{red}{3.25}
+	\bond{blue}{red}{3.4}
+	\bond{red}{blue}{4.1}
+	\bond{red}{blue}{4.25}
+	\bond{red}{blue}{4.4}
+	\bond{blue}{red}{5.1}
+	\bond{blue}{red}{5.25}
+	\bond{blue}{red}{5.4}
+	\bond{red}{blue}{6.1}
+	\bond{red}{blue}{6.25}
+	\bond{red}{blue}{6.4}
+	\bond{blue}{red}{7.1}
+	\bond{blue}{red}{7.25}
+	\bond{blue}{red}{7.4}
+	\bond{red}{blue}{8.1}
+	\bond{red}{blue}{8.25}
+	\bond{red}{blue}{8.4}
+	\braid[rotate=90,style strands={1}{red, very thick},style strands={2}{blue, very thick}] (tst) at (0, 0) s_1 s_1 s_1 s_1 s_1 s_1 s_1 s_1;
+\end{tikzpicture}	
+\end{document}
