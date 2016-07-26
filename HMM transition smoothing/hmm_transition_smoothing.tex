@@ -1,0 +1,90 @@
+\documentclass[crop, tikz]{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}
+
+	% 1st column
+	\node at (0,6.5) {$t-1$};
+	\node[align=center, circle, draw, thick] (s1_1) at (0,5) {$s_1$\\{\scriptsize$\alpha_{t-1}(s_1)$}};
+	\node[align=center, circle, draw, thick] (s2_1) at (0,3) {$s_2$\\{\scriptsize$\alpha_{t-1}(s_2)$}};
+	\node[align=center, circle, draw, thick] (s3_1) at (0,1) {$s_3$\\{\scriptsize$\alpha_{t-1}(s_3)$}};
+	\node[align=center, circle, draw, thick] (s4_1) at (0,-1) {$s_4$\\{\scriptsize$\alpha_{t-1}(s_4)$}};
+	\node [draw, thick] at (0,-2.5) {$(y_{t-1}, id_{t-1})$};
+	
+	% 2nd column
+	\node at (3.5,6.5) {$t$};
+	\node[circle, draw, thick] (s1_2) at (3.5,5) {$s_1$}
+		edge[gray, thin, stealth-] (s1_1)
+		edge[gray, thin, stealth-] (s2_1)
+		edge[gray, thin, stealth-] (s3_1)
+		edge[gray, thin, stealth-] (s4_1);
+	\node[circle, draw, thick] (s3_2) at (3.5,1) {$s_3$}
+		edge[gray, thin, stealth-] (s1_1)
+		edge[gray, thin, stealth-] (s2_1)
+		edge[gray, thin, stealth-] (s3_1)
+		edge[gray, thin, stealth-] (s4_1);
+	\node[circle, draw, thick] (s4_2) at (3.5,-1) {$s_4$}
+		edge[gray, thin, stealth-] (s1_1)
+		edge[gray, thin, stealth-] (s2_1)
+		edge[gray, thin, stealth-] (s3_1)
+		edge[gray, thin, stealth-] (s4_1);
+	\node[align=center, circle, draw, ultra thick, minimum size=4.25em] (s2_2) at (3.5,3) {$s_2$\\{\scriptsize$\alpha_{t}(s_2)$}};
+
+	% 3rd column
+	\node [] (asdf2) at (8.5,-2.5) {$(y_{t+1}, id_{t+1})$};
+	\node [draw, thick] (asdf3) at (12,-2.5) {$(y_{t+2}, id_{t+2})$};
+	\node[align=center, circle, draw, ultra thick, minimum size=4.25em] (s3_3) at (8.5,1) {$s_3$\\{\scriptsize$\beta_{t+1}(s_3)$}}
+		edge[gray, thin, stealth-] (s1_2)
+		edge[gray, thin, stealth-] (s3_2)
+		edge[gray, thin, stealth-] (s4_2);
+	\draw[-stealth, very thick, dashed, bend left=90] (asdf2.west) to node[pos=0.33, align=center, fill=white] {${\bf O'}_{3,id_{t+1}}$\\$\mathcal{N}(y_{t+1};\mu_{id_{t+1}},\sigma_{id_{t+1}})$} (s3_3.west);
+	\node [draw, thick] (asdf2) at (8.5,-2.5) {$(y_{t+1}, id_{t+1})$};
+	\node at (8.5,6.5) {$t+1$};
+	\node[circle, draw, thick] (s1_3) at (8.5,5) {$s_1$}
+		edge[gray, thin, stealth-] (s1_2)
+		edge[gray, thin, stealth-] (s2_2)
+		edge[gray, thin, stealth-] (s3_2)
+		edge[gray, thin, stealth-] (s4_2);
+	\node[circle, draw, thick] (s2_3) at (8.5,3) {$s_2$}
+		edge[gray, thin, stealth-] (s1_2)
+		edge[gray, thin, stealth-] (s2_2)
+		edge[gray, thin, stealth-] (s3_2)
+		edge[gray, thin, stealth-] (s4_2);
+	\node[circle, draw, thick] (s4_3) at (8.5,-1) {$s_4$}
+		edge[gray, thin, stealth-] (s1_2)
+		edge[gray, thin, stealth-] (s2_2)
+		edge[gray, thin, stealth-] (s3_2)
+		edge[gray, thin, stealth-] (s4_2);
+
+	% 4th column
+	\node at (12,6.5) {$t+2$};
+	\node[align=center, circle, draw, thick] (s1_4) at (12,5) {$s_1$\\{\scriptsize$\beta_{t+2}(s_1)$}}
+		edge[gray, thin, stealth-] (s1_3)
+		edge[gray, thin, stealth-] (s2_3)
+		edge[gray, thin, stealth-] (s4_3);
+	\node[align=center, circle, draw, thick] (s2_4) at (12,3) {$s_2$\\{\scriptsize$\beta_{t+2}(s_2)$}}
+		edge[gray, thin, stealth-] (s1_3)
+		edge[gray, thin, stealth-] (s2_3)
+		edge[gray, thin, stealth-] (s4_3);
+	\node[align=center, circle, draw, thick] (s3_4) at (12,1) {$s_3$\\{\scriptsize$\beta_{t+2}(s_3)$}}
+		edge[gray, thin, stealth-] (s1_3)
+		edge[gray, thin, stealth-] (s2_3)
+		edge[gray, thin, stealth-] (s4_3);
+	\node[align=center, circle, draw, thick] (s4_4) at (12,-1) {$s_4$\\{\scriptsize$\beta_{t+2}(s_4)$}}
+		edge[gray, thin, stealth-] (s1_3)
+		edge[gray, thin, stealth-] (s2_3)
+		edge[gray, thin, stealth-] (s4_3);
+	\draw[very thick, stealth-] (s2_2) to node [midway, fill=white] {${\bf T}_{12}$} (s1_1);
+	\draw[very thick, stealth-] (s2_2) to node [midway, fill=white] {${\bf T}_{22}$} (s2_1);
+	\draw[very thick, stealth-] (s2_2) to node [midway, fill=white] {${\bf T}_{32}$} (s3_1);
+	\draw[very thick, stealth-] (s2_2) to node [midway, fill=white] {${\bf T}_{42}$} (s4_1);
+	\draw[very thick, stealth-] (s1_4) to node [midway, fill=white] {${\bf T}_{31}$} (s3_3);
+	\draw[very thick, stealth-] (s2_4) to node [midway, fill=white] {${\bf T}_{32}$} (s3_3);
+	\draw[very thick, stealth-] (s3_4) to node [midway, fill=white] {${\bf T}_{33}$} (s3_3);
+	\draw[very thick, stealth-] (s4_4) to node [midway, fill=white] {${\bf T}_{34}$} (s3_3);
+	\draw[very thick, stealth-] (s3_3) to node [midway, fill=white] {${\bf T}_{23}$} (s2_2);
+	\node [draw, thick] (asdf) at (3.5,-2.5) {$(y_{t}, id_{t})$};
+
+\end{tikzpicture}
+\end{document}
