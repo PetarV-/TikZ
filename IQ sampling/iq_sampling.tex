@@ -1,0 +1,56 @@
+\documentclass[crop, tikz]{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+\begin{document}
+\begin{tikzpicture}[cross/.style={path picture={ 
+	\draw[black] (path picture bounding box.south east) -- (path picture bounding box.north west) (path picture bounding box.south west) -- (path picture bounding box.north east);
+	}}]
+  
+	\node[rectangle, align=center] (fm) at (-2, 0) {\begin{tikzpicture}[samples=1000, domain=0:5]
+			\begin{axis}[
+				hide axis,
+				width=4cm, height=2cm,
+				xtick=\empty,
+				ytick=\empty,
+				xlabel=\empty,
+				ylabel=\empty,
+				xmin=0, xmax=5,
+				ymin=-2.1, ymax=2.1,
+				trig format = rad
+			]
+				\addplot expression [no markers, smooth, thick, black] {2*sin(2*pi*3*x - 8*cos(2*pi*0.25*x))};
+			\end{axis}
+    	\end{tikzpicture}\\ $FM(t)$};
+  		
+	\node[rectangle, align=center] (cos) at (1, -3) {\tikz \draw[x=1.5ex, y=1ex, thick] (0, 0) sin (0.5, 0.5) cos (1, 0) sin (1.5, -0.5) cos (2, 0) sin (2.5, 0.5) cos (3, 0) sin (3.5, -0.5) cos (4, 0) sin (4.5, 0.5) cos (5, 0) sin (5.5, -0.5) cos (6, 0);\\ $\cos(2\pi f t)$};
+	
+	\node[circle, draw, cross, thick]  (mul1) at (1, -0.7) {};
+	\node[circle, draw, cross, thick]  (mul2) at (2, 1.3) {};
+	\node[rectangle, draw, thick] (rot) at (2, 0.3) {$-90^\circ$};
+	\node[rectangle] (it) at (3, -1) {$I(t)$};
+	\node[rectangle] (qt) at (3, 1.6) {$Q(t)$};
+	\node[rectangle, draw, thick, align=center] (lp1) at (4.75, -0.7) {\tikz \draw[x=3.5ex, y=1ex, thick] (0, 0) sin (0.5, 0.5) cos (1, 0) sin (1.5, -0.5) cos (2, 0) (0.6, -0.5) -- (1.4, 0.5);\\ \tikz \draw[x=3.5ex, y=1ex, thick] (0, 0) sin (0.5, 0.5) cos (1, 0) sin (1.5, -0.5) cos (2, 0);};
+	\node[rectangle, draw, thick, align=center] (lp2) at (4.75, 1.3) {\tikz \draw[x=3.5ex, y=1ex, thick] (0, 0) sin (0.5, 0.5) cos (1, 0) sin (1.5, -0.5) cos (2, 0) (0.6, -0.5) -- (1.4, 0.5);\\ \tikz \draw[x=3.5ex, y=1ex, thick] (0, 0) sin (0.5, 0.5) cos (1, 0) sin (1.5, -0.5) cos (2, 0);};
+	\node[rectangle, draw, thick] (samp1) at (7.25, -0.7) {sample};
+	\node[rectangle, draw, thick] (samp2) at (7.25, 1.3) {sample};
+	\node[rectangle] (in) at (8.5, -1) {$I_n$};
+	\node[rectangle] (qn) at (8.5, 1.6) {$Q_n$};
+ 
+	\draw[thick, -stealth] (-0.65, 0.3) -- (0, 0.3) |- (mul1);
+	\draw[thick, -stealth] (0, 0.3) |- (mul2);
+	\draw[thick, -stealth] (cos) -- (mul1);
+	\draw[thick, -stealth] (1, -1.85) -| (rot);
+	\draw[thick, -stealth] (rot) -- (mul2);
+	\draw[thick] (mul1) -- (1.9, -0.7);
+	\draw[thick] (1.89, -0.7) sin (2, -0.6) cos (2.11, -0.7);
+	\draw[thick, -stealth] (2.1, -0.7) -- (lp1);
+	\draw[thick, -stealth] (mul2) -- (lp2);
+	\draw[thick, -stealth] (lp1) -- (samp1);
+	\draw[thick, -stealth] (lp2) -- (samp2);
+	\draw[thick] (samp1) -| (9, 0.3);
+	\draw[thick] (samp2) -| (9, 0.3);
+	\draw[thick, -stealth] (9, 0.3) -- node[below] {$(I_n, Q_n)$} (11, 0.3);
+	
+\end{tikzpicture}
+\end{document}

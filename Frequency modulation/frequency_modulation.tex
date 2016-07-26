@@ -1,0 +1,58 @@
+\documentclass[crop, tikz]{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+\definecolor{olivegreen}{rgb}{0,0.6,0}
+
+\begin{document}
+\begin{tikzpicture}[samples=1000, domain=0:10]
+
+	\begin{axis}[
+		width=11cm, height=3.5cm,
+		xtick=\empty,
+		ytick=\empty,
+		xlabel={\large $t$},
+		ylabel={\large $x(t)$},
+		xmin=0, xmax=11,
+		ymin=-3, ymax=5,
+		axis lines = middle,
+		very thick,
+		trig format = rad
+	]
+		\addplot [no markers, smooth, thick] {2*sin(2*pi*0.25*x)};
+	\end{axis}
+		
+	\begin{axis}[
+		at={(0, -2.25cm)},
+		width=11cm, height=3.5cm,
+		xtick=\empty,
+		ytick=\empty,
+		xlabel={\large $t$},
+		ylabel={\textcolor{blue}{carrier wave}},
+		xmin=0, xmax=11,
+		ymin=-3, ymax=5,
+		axis lines = middle,
+		very thick,
+		trig format = rad
+	]
+		\addplot [no markers, smooth, blue, very thick] {2*sin(6*pi*x)};
+	\end{axis}
+		
+	\begin{axis}[
+		at={(0, -4.5cm)},
+		width=11cm, height=3.5cm,
+		xtick=\empty,
+		ytick=\empty,
+		xlabel={\large $t$},
+		ylabel={\textcolor{olivegreen}{FM wave}},
+		xmin=0, xmax=11,
+		ymin=-3, ymax=5,
+		axis lines = middle,
+		very thick,
+		trig format = rad
+	]
+		\addplot expression [no markers, smooth, olivegreen, very thick] {2*sin(2*pi*3*x - 8*cos(2*pi*0.25*x))};
+	\end{axis}
+	
+\end{tikzpicture}
+\end{document}
