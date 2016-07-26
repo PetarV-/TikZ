@@ -1,0 +1,68 @@
+\documentclass[crop, tikz]{standalone}
+\usepackage{tikz}
+
+\usetikzlibrary{positioning, decorations.pathmorphing}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{echodrk}{HTML}{0099cc}
+
+\begin{document}
+\begin{tikzpicture}
+	\node[circle, draw, very thick, fill=echodrk] (11) {};
+	\node[below = 0.5em of 11] (11c) {$({\bf 0}, G_3)$};
+	\node[circle, draw, very thick, fill=echodrk, right=3em of 11] (22) {};
+	\node[below =0.5em of 22] (22c) {$({\bf 1}, G_3)$};
+	\node[circle, draw, very thick, fill=echodrk, right=3em of 22] (33) {};
+	\node[below =0.5em of 33] (33c) {$({\bf 2}, G_3)$};
+	\node[circle, draw, very thick, fill=echodrk, right=3em of 33] (44) {};
+	\node[below =0.5em of 44] (44c) {$({\bf 3}, G_3)$};
+		
+	\node[circle, draw, very thick, fill=mygreen, above = 4.5em of 11] (111) {};
+	\node at ([shift={(0.53,-0.3)}]111.-45) {$({\bf 0}, G_2)$};
+	\node[circle, draw, very thick, fill=mygreen, right=3em of 111] (222) {};
+	\node at ([shift={(0.53,-0.3)}]222.-45) {$({\bf 1}, G_2)$};
+	\node[circle, draw, very thick, fill=mygreen, right=3em of 222] (333) {};
+	\node at ([shift={(0.53,-0.3)}]333.-45) {$({\bf 2}, G_2)$};
+	\node[circle, draw, very thick, fill=mygreen, right=3em of 333] (444) {};
+	\node at ([shift={(0.53,-0.3)}]444.-45) {$({\bf 3}, G_2)$};
+		
+	\node[circle, draw, very thick, fill=red, above = 4.5em of 111] (1) {};
+	\node[above = 0.5em of 1] (1c) {$({\bf 0}, G_1)$};
+	\node[circle, draw, very thick, fill=red, right=3em of 1] (2) {};
+	\node[above =0.5em of 2] (2c) {$({\bf 1}, G_1)$};
+	\node[circle, draw, very thick, fill=red, right=3em of 2] (3) {};
+	\node[above =0.5em of 3] (3c) {$({\bf 2}, G_1)$};
+	\node[circle, draw, very thick, fill=red, right=3em of 3] (4) {};
+	\node[above =0.5em of 4] (3c) {$({\bf 3}, G_1)$};
+		
+		
+	\draw[ultra thick, -, decoration={snake, pre length=0.01mm, segment length=2mm, amplitude=0.3mm, post length=0.2mm}, decorate] (11) to (111);
+	\draw[ultra thick, -, decoration={snake, pre length=0.01mm, segment length=2mm, amplitude=0.3mm, post length=0.2mm}, decorate] (22) to (222);
+	\draw[ultra thick, -, decoration={snake, pre length=0.01mm, segment length=2mm, amplitude=0.3mm, post length=0.2mm}, decorate] (33) to (333);
+	\draw[ultra thick, -, decoration={snake, pre length=0.01mm, segment length=2mm, amplitude=0.3mm, post length=0.2mm}, decorate] (44) to (444);
+		
+	\draw[ultra thick, -, decoration={snake, pre length=0.01mm, segment length=2mm, amplitude=0.3mm, post length=0.2mm}, decorate] (1) to (111);
+	\draw[ultra thick, -, decoration={snake, pre length=0.01mm, segment length=2mm, amplitude=0.3mm, post length=0.2mm}, decorate] (2) to (222);
+	\draw[ultra thick, -, decoration={snake, pre length=0.01mm, segment length=2mm, amplitude=0.3mm, post length=0.2mm}, decorate] (3) to (333);
+	\draw[ultra thick, -, decoration={snake, pre length=0.01mm, segment length=2mm, amplitude=0.3mm, post length=0.2mm}, decorate] (4) to (444);	
+		
+	\draw[ultra thick, -, bend right=12, decoration={snake, pre length=0.01mm, segment length=2mm, amplitude=0.3mm, post length=0.2mm}, decorate] (1) to (11);
+	\draw[ultra thick, -, bend right=12, decoration={snake, pre length=0.01mm, segment length=2mm, amplitude=0.3mm, post length=0.2mm}, decorate] (2) to (22);
+	\draw[ultra thick, -, bend right=12, decoration={snake, pre length=0.01mm, segment length=2mm, amplitude=0.3mm, post length=0.2mm}, decorate] (3) to (33);
+	\draw[ultra thick, -, bend right=12, decoration={snake, pre length=0.01mm, segment length=2mm, amplitude=0.3mm, post length=0.2mm}, decorate] (4) to (44);
+		
+	\draw[-, ultra thick, color=echodrk] (11) to (22); 
+	\draw[-, ultra thick, bend right=17, color=echodrk] (11) to (33);
+	\draw[-, ultra thick, color=echodrk] (33) to (44); 
+				
+	\draw[-, ultra thick, color=mygreen] (111) to (222); 
+	\draw[-, ultra thick, color=mygreen] (222) to (333); 
+		
+	\draw[-, ultra thick, bend left=17, color=red] (1) to (3); 
+	\draw[-, ultra thick, bend left=17, color=red] (1) to (4); 
+	\draw[-, ultra thick, bend right=17, color=red] (2) to (4); 
+	\draw[-, ultra thick, color=red] (2) to (3); 
+	\draw[-, ultra thick, color=red] (3) to (4); 
+		
+\end{tikzpicture}
+\end{document}
