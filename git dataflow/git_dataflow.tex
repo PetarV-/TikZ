@@ -10,6 +10,12 @@
 
 \begin{document}
 \begin{tikzpicture}
+
+	\fill[pplport!15] (0, 0) ellipse (0.25 and 3);
+	\fill[redport!15] (2.75, -3) rectangle (3.25, 3);
+	\fill[bluport!15] (6, 0) ellipse (0.25 and 3);
+	\fill[orgport!15] (9, 0) ellipse (0.25 and 3);
+	
 	\draw[thick, pplport] (0, 0) ellipse (0.25 and 3);
 	\draw[ultra thick, pplport, decorate, decoration={snake, segment length=1mm, amplitude=0.3mm}] (0, 0) ellipse (0.23 and 3.05);
 	\node[text height=1em, text depth=1em, pplport] (1) at (0, -3.5) {\emph{stash}};
