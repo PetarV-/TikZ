@@ -6,7 +6,7 @@ A diagram expressing a two-dimensional convolutional operator as an operation of
 
 ## Output
 
-![2DConvolution](https://www.dropbox.com/s/qs4tojv5u5h48lf/2d_convolution.png?raw=1)
+![2DConvolution](https://www.dropbox.com/s/n14q90gz8a8rbxb/2d_convolution.png?raw=1)
 
 ## Source
 
