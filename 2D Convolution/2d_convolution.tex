@@ -1,0 +1,78 @@
+\documentclass[crop, tikz]{standalone}
+\usepackage{tikz}
+
+\usetikzlibrary{matrix, positioning}
+
+\begin{document}
+\begin{tikzpicture}
+
+	\matrix (mtr) [matrix of nodes,row sep=-\pgflinewidth, nodes={draw}]
+	{
+		0 & 1 & 1 & |[fill=red!30]| 1 & |[fill=red!30]| 0 & |[fill=red!30]| 0 & 0\\
+		0 & 0 & 1 & |[fill=red!30]| 1 & |[fill=red!30]| 1 & |[fill=red!30]| 0 & 0\\
+		0 & 0 & 0 & |[fill=red!30]| 1 & |[fill=red!30]| 1 & |[fill=red!30]| 1 & 0\\
+		0 & 0 & 0 & 1 & 1 & 0 & 0\\
+		0 & 0 & 1 & 1 & 0 & 0 & 0\\
+		0 & 1 & 1 & 0 & 0 & 0 & 0\\
+		1 & 1 & 0 & 0 & 0 & 0 & 0\\
+	};
+
+	\draw[very thick, red] (mtr-1-4.north west) rectangle (mtr-3-6.south east);
+
+	\node [below= of mtr-5-4.south] (lm) {$\bf I$};
+
+	\node[right = 0.2em of mtr] (str) {$*$};
+
+	\matrix (K) [right=0.2em of str,matrix of nodes,row sep=-\pgflinewidth, nodes={draw, fill=blue!30}]
+	{
+		1 & 0 & 1 \\
+		0 & 1 & 0 \\
+		1 & 0 & 1 \\
+	};
+	\node [below = of K-3-2.south] (lk) {$\bf K$};
+
+	\node [right = 0.2em of K] (eq) {$=$};
+
+	\matrix (ret) [right=0.2em of eq,matrix of nodes,row sep=-\pgflinewidth, nodes={draw}]
+	{
+		1 & 4 & 3 & |[fill=green!30]| 4 & 1\\
+		1 & 2 & 4 & 3 & 3\\
+		1 & 2 & 3 & 4 & 1\\
+		1 & 3 & 3 & 1 & 1\\
+		3 & 3 & 1 & 1 & 0\\
+	};
+	\node [below = of ret-4-3.south] (lim) {${\bf I} * {\bf K}$};
+
+	\draw[very thick, green] (ret-1-4.north west) rectangle (ret-1-4.south east);
+
+	\draw[densely dotted, blue, thick] (mtr-1-4.north west) -- (K-1-1.north west);
+	\draw[densely dotted, blue, thick] (mtr-3-4.south west) -- (K-3-1.south west);
+	\draw[densely dotted, blue, thick] (mtr-1-6.north east) -- (K-1-3.north east);
+	\draw[densely dotted, blue, thick] (mtr-3-6.south east) -- (K-3-3.south east);
+
+	\draw[densely dotted, green, thick] (ret-1-4.north west) -- (K-1-1.north west);
+	\draw[densely dotted, green, thick] (ret-1-4.south west) -- (K-3-1.south west);
+	\draw[densely dotted, green, thick] (ret-1-4.north east) -- (K-1-3.north east);
+	\draw[densely dotted, green, thick] (ret-1-4.south east) -- (K-3-3.south east);
+
+	\matrix (K) [right=0.2em of str,matrix of nodes,row sep=-\pgflinewidth, nodes={draw, fill=blue!10}]
+	{
+		1 & 0 & 1 \\
+		0 & 1 & 0 \\
+		1 & 0 & 1 \\
+	};
+
+	\draw[very thick, blue] (K-1-1.north west) rectangle (K-3-3.south east);
+
+	\node[anchor=south east, inner sep=0.01em, blue] at (mtr-1-4.south east) (xx) {\scalebox{.5}{$\times 1$}};
+	\node[anchor=south east, inner sep=0.01em, blue] at (mtr-1-5.south east) (xx) {\scalebox{.5}{$\times 0$}};
+	\node[anchor=south east, inner sep=0.01em, blue] at (mtr-1-6.south east) (xx) {\scalebox{.5}{$\times 1$}};
+	\node[anchor=south east, inner sep=0.01em, blue] at (mtr-2-4.south east) (xx) {\scalebox{.5}{$\times 0$}};
+	\node[anchor=south east, inner sep=0.01em, blue] at (mtr-2-5.south east) (xx) {\scalebox{.5}{$\times 1$}};
+	\node[anchor=south east, inner sep=0.01em, blue] at (mtr-2-6.south east) (xx) {\scalebox{.5}{$\times 0$}};
+	\node[anchor=south east, inner sep=0.01em, blue] at (mtr-3-4.south east) (xx) {\scalebox{.5}{$\times 1$}};
+	\node[anchor=south east, inner sep=0.01em, blue] at (mtr-3-5.south east) (xx) {\scalebox{.5}{$\times 0$}};
+	\node[anchor=south east, inner sep=0.01em, blue] at (mtr-3-6.south east) (xx) {\scalebox{.5}{$\times 1$}};
+
+\end{tikzpicture}
+\end{document}
