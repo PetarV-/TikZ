@@ -2,7 +2,7 @@
 
 ## Notes
 
-A diagram expressing a two-dimensional convolutional operator as an operation of sliding the kernel matrix across the target image and recording elementwise products.
+A diagram expressing a two-dimensional convolutional operator as an operation of sliding the kernel matrix across the target image and recording elementwise products. Makes heavy use of the `matrix` environment in TikZ.
 
 ## Output
 
