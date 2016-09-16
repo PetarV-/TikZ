@@ -10,4 +10,4 @@ A diagram representing an in-depth view at a single perceptron, along with its p
 
 ## Source
 
-[Deep learing for complete beginners: Recognising handwritten digits ](http://online.cambridgecoding.com/notebooks/cca_admin/deep-learning-for-complete-beginners-recognising-handwritten-digits), *Cambridge Coding Academy*
+[Deep learing for complete beginners: Recognising handwritten digits](http://online.cambridgecoding.com/notebooks/cca_admin/deep-learning-for-complete-beginners-recognising-handwritten-digits), *Cambridge Coding Academy*
