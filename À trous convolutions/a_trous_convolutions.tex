@@ -1,0 +1,200 @@
+\documentclass[crop, tikz]{standalone}
+\usepackage{tikz}
+
+\usetikzlibrary{positioning}
+
+\begin{document}
+\begin{tikzpicture}
+
+	\node[circle, fill, inner sep=0.2em] (s1) {};
+	\node[circle, below=1em of s1, fill, inner sep=0.2em] (s2) {};
+	\node[circle, below=1em of s2, fill, inner sep=0.2em] (s3) {};
+	\node[circle, below=1em of s3, fill, inner sep=0.2em] (s4) {};
+	\node[circle, below=1em of s4, fill, inner sep=0.2em] (s5) {};
+	\node[circle, below=1em of s5, fill, inner sep=0.2em] (s6) {};
+	\node[circle, below=1em of s6, fill, inner sep=0.2em] (s7) {};
+	\node[circle, below=1em of s7, fill, inner sep=0.2em] (s8) {};
+	\node[circle, below=1em of s8, fill, inner sep=0.2em] (s9) {};
+	\node[circle, below=1em of s9, fill, inner sep=0.2em] (s10) {};
+	\node[circle, below=1em of s10, fill, inner sep=0.2em] (s11) {};
+	\node[circle, below=1em of s11, fill, inner sep=0.2em] (s12) {};
+	\node[circle, below=1em of s12, fill, inner sep=0.2em] (s13) {};
+	\node[circle, below=1em of s13, fill, inner sep=0.2em] (s14) {};
+	\node[circle,below=1em of s14,  fill, inner sep=0.2em] (s15) {};
+	\node[circle, below=1em of s15, fill, inner sep=0.2em] (s16) {};
+		
+	\foreach \x in {1,...,16}
+		\node[circle, right=2em of s\x, fill, inner sep=0.2em] (h\x) {};
+	\foreach \x in {1,...,16}
+		\node[circle, right=2em of h\x, fill, inner sep=0.2em] (hh\x) {};
+	\foreach \x in {1,...,16}
+		\node[circle, right=2em of hh\x, fill, inner sep=0.2em] (hhh\x) {};
+	\foreach \x in {1,...,16}
+		\node[circle, right=2em of hhh\x, fill, inner sep=0.2em] (hhhh\x) {};
+	\foreach \x in {1,...,16}
+		\node[circle, right=2em of hhhh\x] (o\x) {};
+	\foreach \x in {1,...,16}
+		\node[circle, left=2em of s\x] (i\x) {};
+    		
+	\foreach \x in {1,...,16}
+		\draw[-stealth, thick] (i\x) --node[above] {$I_{\x}$} (s\x);
+	\foreach \x in {1,...,16}
+		\draw[-stealth, thick] (hhhh\x) --node[above] {$O_{\x}$} (o\x);
+	\foreach \x in {1,...,16}
+		\draw[-stealth, thick, gray] (s\x) -- (h\x);
+	\foreach \x in {1,...,16}
+		\draw[-stealth, thick, gray] (h\x) -- (hh\x);
+	\foreach \x in {1,...,16}
+		\draw[-stealth, thick, gray] (hh\x) -- (hhh\x);
+	\foreach \x in {1,...,16}
+		\draw[-stealth, thick, gray] (hhh\x) -- (hhhh\x);
+    		
+	\draw[-stealth, thick, gray] (s1) -- (h2);
+	\draw[-stealth, thick, gray] (s2) -- (h1);
+	\draw[-stealth, thick, gray] (s2) -- (h3);
+	\draw[-stealth, thick, gray] (s3) -- (h2);
+	\draw[-stealth, thick, gray] (s3) -- (h4);
+	\draw[-stealth, thick, gray] (s4) -- (h3);
+	\draw[-stealth, thick, gray] (s4) -- (h5);
+	\draw[-stealth, thick, gray] (s5) -- (h4);
+	\draw[-stealth, thick, gray] (s5) -- (h6);
+	\draw[-stealth, thick, gray] (s6) -- (h5);
+	\draw[-stealth, thick, gray] (s6) -- (h7);
+	\draw[-stealth, thick, gray] (s7) -- (h6);
+	\draw[-stealth, thick, gray] (s7) -- (h8);
+	\draw[-stealth, thick, gray] (s8) -- (h7);
+	\draw[-stealth, thick, gray] (s8) -- (h9);
+	\draw[-stealth, thick, gray] (s9) -- (h8);
+	\draw[-stealth, thick, gray] (s9) -- (h10);
+	\draw[-stealth, thick, gray] (s10) -- (h9);
+	\draw[-stealth, thick, gray] (s10) -- (h11);
+	\draw[-stealth, thick, gray] (s11) -- (h10);
+	\draw[-stealth, thick, gray] (s11) -- (h12);
+	\draw[-stealth, thick, gray] (s12) -- (h11);
+	\draw[-stealth, thick, gray] (s12) -- (h13);
+	\draw[-stealth, thick, gray] (s13) -- (h12);
+	\draw[-stealth, thick, gray] (s13) -- (h14);
+	\draw[-stealth, thick, gray] (s14) -- (h13);
+	\draw[-stealth, thick, gray] (s14) -- (h15);
+	\draw[-stealth, thick, gray] (s15) -- (h14);
+	\draw[-stealth, thick, gray] (s15) -- (h16);
+	\draw[-stealth, thick, gray] (s16) -- (h15);
+    	
+	\draw[-stealth, thick, gray] (h1) -- (hh3);
+	\draw[-stealth, thick, gray] (h2) -- (hh4);
+	\draw[-stealth, thick, gray] (h3) -- (hh1);
+	\draw[-stealth, thick, gray] (h3) -- (hh5);
+	\draw[-stealth, thick, gray] (h4) -- (hh2);
+	\draw[-stealth, thick, gray] (h4) -- (hh6);
+	\draw[-stealth, thick, gray] (h5) -- (hh3);
+	\draw[-stealth, thick, gray] (h5) -- (hh7);
+	\draw[-stealth, thick, gray] (h6) -- (hh4);
+	\draw[-stealth, thick, gray] (h6) -- (hh8);
+	\draw[-stealth, thick, gray] (h7) -- (hh5);
+	\draw[-stealth, thick, gray] (h7) -- (hh9);
+	\draw[-stealth, thick, gray] (h8) -- (hh6);
+	\draw[-stealth, thick, gray] (h8) -- (hh10);
+	\draw[-stealth, thick, gray] (h9) -- (hh7);
+	\draw[-stealth, thick, gray] (h9) -- (hh11);
+	\draw[-stealth, thick, gray] (h10) -- (hh8);
+	\draw[-stealth, thick, gray] (h10) -- (hh12);
+	\draw[-stealth, thick, gray] (h11) -- (hh9);
+	\draw[-stealth, thick, gray] (h11) -- (hh13);
+	\draw[-stealth, thick, gray] (h12) -- (hh10);
+	\draw[-stealth, thick, gray] (h12) -- (hh14);
+	\draw[-stealth, thick, gray] (h13) -- (hh11);
+	\draw[-stealth, thick, gray] (h13) -- (hh15);
+	\draw[-stealth, thick, gray] (h14) -- (hh12);
+	\draw[-stealth, thick, gray] (h14) -- (hh16);
+	\draw[-stealth, thick, gray] (h15) -- (hh13);
+	\draw[-stealth, thick, gray] (h16) -- (hh14);
+    	
+	\draw[-stealth, thick, gray] (hh1) -- (hhh5);
+	\draw[-stealth, thick, gray] (hh2) -- (hhh6);
+	\draw[-stealth, thick, gray] (hh3) -- (hhh7);
+	\draw[-stealth, thick, gray] (hh4) -- (hhh8);
+	\draw[-stealth, thick, gray] (hh5) -- (hhh1);
+	\draw[-stealth, thick, gray] (hh5) -- (hhh9);
+	\draw[-stealth, thick, gray] (hh6) -- (hhh2);
+	\draw[-stealth, thick, gray] (hh6) -- (hhh10);
+	\draw[-stealth, thick, gray] (hh7) -- (hhh3);
+	\draw[-stealth, thick, gray] (hh7) -- (hhh11);
+	\draw[-stealth, thick, gray] (hh8) -- (hhh4);
+	\draw[-stealth, thick, gray] (hh8) -- (hhh12);
+	\draw[-stealth, thick, gray] (hh9) -- (hhh5);
+	\draw[-stealth, thick, gray] (hh9) -- (hhh13);
+	\draw[-stealth, thick, gray] (hh10) -- (hhh6);
+	\draw[-stealth, thick, gray] (hh10) -- (hhh14);
+	\draw[-stealth, thick, gray] (hh11) -- (hhh7);
+	\draw[-stealth, thick, gray] (hh11) -- (hhh15);
+	\draw[-stealth, thick, gray] (hh12) -- (hhh8);
+	\draw[-stealth, thick, gray] (hh12) -- (hhh16);
+	\draw[-stealth, thick, gray] (hh13) -- (hhh9);
+	\draw[-stealth, thick, gray] (hh14) -- (hhh10);
+	\draw[-stealth, thick, gray] (hh15) -- (hhh11);
+	\draw[-stealth, thick, gray] (hh16) -- (hhh12);
+    	
+	\draw[-stealth, thick, gray] (hhh1) -- (hhhh9);
+	\draw[-stealth, thick, gray] (hhh2) -- (hhhh10);
+	\draw[-stealth, thick, gray] (hhh3) -- (hhhh11);
+	\draw[-stealth, thick, gray] (hhh4) -- (hhhh12);
+	\draw[-stealth, thick, gray] (hhh5) -- (hhhh13);
+	\draw[-stealth, thick, gray] (hhh6) -- (hhhh14);
+	\draw[-stealth, thick, gray] (hhh7) -- (hhhh15);
+	\draw[-stealth, thick, gray] (hhh8) -- (hhhh16);
+	\draw[-stealth, thick, gray] (hhh9) -- (hhhh1);
+	\draw[-stealth, thick, gray] (hhh10) -- (hhhh2);
+	\draw[-stealth, thick, gray] (hhh11) -- (hhhh3);
+	\draw[-stealth, thick, gray] (hhh12) -- (hhhh4);
+	\draw[-stealth, thick, gray] (hhh13) -- (hhhh5);
+	\draw[-stealth, thick, gray] (hhh14) -- (hhhh6);
+	\draw[-stealth, thick, gray] (hhh15) -- (hhhh7);
+	\draw[-stealth, thick, gray] (hhh16) -- (hhhh8);
+    	
+	\draw[-stealth, ultra thick, red] (hhh16) -- (hhhh16);
+	\draw[-stealth, ultra thick, red] (hhh8) -- (hhhh16);
+    	
+	\draw[-stealth, ultra thick, red] (hh16) -- (hhh16);
+	\draw[-stealth, ultra thick, red] (hh12) -- (hhh16);
+	\draw[-stealth, ultra thick, red] (hh4) -- (hhh8);
+	\draw[-stealth, ultra thick, red] (hh8) -- (hhh8);
+	\draw[-stealth, ultra thick, red] (hh12) -- (hhh8);
+    	
+	\draw[-stealth, ultra thick, red] (h16) -- (hh16);
+	\draw[-stealth, ultra thick, red] (h14) -- (hh16);
+	\draw[-stealth, ultra thick, red] (h14) -- (hh12);
+	\draw[-stealth, ultra thick, red] (h12) -- (hh12);
+	\draw[-stealth, ultra thick, red] (h10) -- (hh12);
+	\draw[-stealth, ultra thick, red] (h10) -- (hh8);
+	\draw[-stealth, ultra thick, red] (h8) -- (hh8);
+	\draw[-stealth, ultra thick, red] (h6) -- (hh8);
+	\draw[-stealth, ultra thick, red] (h6) -- (hh4);
+	\draw[-stealth, ultra thick, red] (h4) -- (hh4);
+	\draw[-stealth, ultra thick, red] (h2) -- (hh4);
+    	
+	\draw[-stealth, ultra thick, red] (s16) -- (h16);
+	\draw[-stealth, ultra thick, red] (s15) -- (h16);
+	\draw[-stealth, ultra thick, red] (s15) -- (h14);
+	\draw[-stealth, ultra thick, red] (s14) -- (h14);
+	\draw[-stealth, ultra thick, red] (s13) -- (h14);
+	\draw[-stealth, ultra thick, red] (s13) -- (h12);
+	\draw[-stealth, ultra thick, red] (s12) -- (h12);
+	\draw[-stealth, ultra thick, red] (s11) -- (h12);
+	\draw[-stealth, ultra thick, red] (s11) -- (h10);
+	\draw[-stealth, ultra thick, red] (s10) -- (h10);
+	\draw[-stealth, ultra thick, red] (s9) -- (h10);
+	\draw[-stealth, ultra thick, red] (s9) -- (h8);
+	\draw[-stealth, ultra thick, red] (s8) -- (h8);
+	\draw[-stealth, ultra thick, red] (s7) -- (h8);
+	\draw[-stealth, ultra thick, red] (s7) -- (h6);
+	\draw[-stealth, ultra thick, red] (s6) -- (h6);
+	\draw[-stealth, ultra thick, red] (s5) -- (h6);
+	\draw[-stealth, ultra thick, red] (s5) -- (h4);
+	\draw[-stealth, ultra thick, red] (s4) -- (h4);
+	\draw[-stealth, ultra thick, red] (s3) -- (h4);
+	\draw[-stealth, ultra thick, red] (s3) -- (h2);
+	\draw[-stealth, ultra thick, red] (s2) -- (h2);
+	\draw[-stealth, ultra thick, red] (s1) -- (h2);
+
+\end{tikzpicture}
+\end{document}
