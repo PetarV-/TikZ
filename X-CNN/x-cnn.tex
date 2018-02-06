@@ -1,0 +1,304 @@
+\documentclass[crop, tikz]{standalone}
+\usepackage{tikz}
+
+\usetikzlibrary{arrows,decorations.pathmorphing,backgrounds,positioning,fit,petri, decorations.pathreplacing,shadows,calc}
+
+\definecolor{echoreg}{HTML}{2cb1e1}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\usepackage{etoolbox}
+
+\newtoggle{redraw}
+\newtoggle{redraw2}
+
+\tikzset{%
+pics/cube/.style args={#1/#2/#3/#4}{code={%
+	\begin{scope}[line width=#4mm]
+	\begin{scope}
+	\clip (-#1,-#2,0) -- (#1,-#2,0) -- (#1,#2,0) -- (-#1,#2,0) -- cycle;
+	\filldraw (-#1,-#2,0) -- (#1,-#2,0) -- (#1,#2,0) -- (-#1,#2,0) -- cycle;
+	\end{scope}
+\iftoggle{redraw}{%
+}{%
+	\begin{scope}
+	\clip (-#1,-#2,0) -- (-#1-#3,-#2,-#3) -- (-#1-#3,#2,-#3) -- (-#1,#2,0) -- cycle;
+	\filldraw (-#1,-#2,0) -- (-#1-#3,-#2,-#3) -- (-#1-#3,#2,-#3) -- (-#1,#2,0) -- cycle;
+	\end{scope}
+}
+\iftoggle{redraw2}{%
+}{
+	\begin{scope}
+	\clip (-#1,#2,0) -- (-#1-#3,#2,-#3) -- (#1-#3,#2,-#3) -- (#1,#2,0) -- cycle;
+	\filldraw (-#1,#2,0) -- (-#1-#3,#2,-#3) -- (#1-#3,#2,-#3) -- (#1,#2,0) -- cycle;
+	\end{scope}
+}
+	\node[inner sep=0] (-A) at (-#1-#3*0.5, 0, -#3*0.5) {};
+	\node[inner sep=0] (-B) at (#1-#3*0.5, 0, -#3*0.5) {};
+	
+	\coordinate (-V) at (#1, #2);
+	\coordinate (-W) at (#1, -#2);
+	\end{scope}
+}}}
+
+\begin{document}
+\begin{tikzpicture}
+	\node[rectangle, align=center, draw, very thick, minimum height=10em, minimum width=10em, fill=red!10] (i1) {Input\\ (channel 1)};
+	\node[rectangle, align=center, draw, very thick, minimum height=10em, minimum width=10em, fill=green!10, below=of i1] (i2) {Input\\ (channel 2)};
+	\node[rectangle, draw, align=center, very thick, minimum height=10em, minimum width=10em, below=of i2, fill=blue!10] (i3) {Input\\ (channel 3)};
+	
+	\togglefalse{redraw}
+	\togglefalse{redraw2}
+	
+  	\node[right=12em of i1] (x) {};
+  	\node[right=12em of i2] (y) {};
+  	\node[right=12em of i3] (z) {};
+  	\pic[right=12em of i1, fill=echoreg!10] (X) {cube={1.8/1.8/1/1}};
+  	\pic[right=12em of i2, fill=echoreg!10] (Y) {cube={1.8/1.8/1/1}};
+  	\pic[right=12em of i3, fill=echoreg!10] (Z) {cube={1.8/1.8/1/1}};
+  	
+  	
+  	\node[right=12em of x] (x1) {};
+  	\node[right=12em of y] (y1) {};
+  	\node[right=12em of z] (z1) {};
+  	\pic[right=12em of x, fill=red!10] (X1) {cube={0.9/0.9/1/1}};
+  	\pic[right=12em of y, fill=red!10] (Y1) {cube={0.9/0.9/1/1}};
+  	\pic[right=12em of z, fill=red!10] (Z1) {cube={0.9/0.9/1/1}};
+  	
+  	\node[right=12em of x1] (x2) {};
+  	\node[right=12em of y1] (y2) {};
+  	\node[right=12em of z1] (z2) {};
+  	\pic[right=12em of x1, fill=echoreg!10] (X2) {cube={0.9/0.9/2/1}};
+  	\pic[right=12em of y1, fill=echoreg!10] (Y2) {cube={0.9/0.9/2/1}};
+  	\pic[right=12em of z1, fill=echoreg!10] (Z2) {cube={0.9/0.9/2/1}};
+  	
+  	\node[right=10em of x2] (x3) {};
+  	\node[right=10em of y2] (y3) {};
+  	\node[right=10em of z2] (z3) {};
+  	\pic[right=10em of x2, fill=red!10] (X3) {cube={0.45/0.45/2/1}};
+  	\pic[right=10em of y2, fill=red!10] (Y3) {cube={0.45/0.45/2/1}};
+  	\pic[right=10em of z2, fill=red!10] (Z3) {cube={0.45/0.45/2/1}};
+  	
+  	\node[right=10em of y3] (y4) {};
+  	\pic[right=10em of y3, fill=mymauve!10] (Y4) {cube={0.45/0.45/6/1}};
+  	
+  	\draw [-stealth, ultra thick] (i1) -- node[above] {Conv.} (X-A);
+  	\draw [-stealth, ultra thick] (i2) -- node[above] {Conv.} (Y-A);
+  	\draw [-stealth, ultra thick] (i3) -- node[above] {Conv.} (Z-A);
+  	
+  	\draw [-stealth, ultra thick] (X-B) -- node[above] {Pool} (X1-A);
+  	\draw [-stealth, ultra thick] (Y-B) -- node[above] {Pool} (Y1-A);
+  	\draw [-stealth, ultra thick] (Z-B) -- node[above] {Pool} (Z1-A);	
+  	
+  	\draw [-stealth, decoration={snake, pre length=0.01mm, segment length=2mm, amplitude=0.3mm, post length=1.5mm}, decorate,ultra thick] (X1-B) -- node[right=2em] {$\times$conn.} (Y2-A);
+  	\draw [-stealth, decoration={snake, pre length=0.01mm, segment length=2mm, amplitude=0.3mm, post length=1.5mm}, decorate,ultra thick] (X1-B) -- node[above] {} (Z2-A);
+  	
+  	\draw [-stealth, decoration={snake, pre length=0.01mm, segment length=2mm, amplitude=0.3mm, post length=1.5mm}, decorate,ultra thick] (Y1-B) -- node[above] {} (X2-A);
+  	\draw [-stealth, decoration={snake, pre length=0.01mm, segment length=2mm, amplitude=0.3mm, post length=1.5mm}, decorate,ultra thick] (Y1-B) -- node[above] {} (Z2-A);
+  	
+  	\draw [-stealth, decoration={snake, pre length=0.01mm, segment length=2mm, amplitude=0.3mm, post length=1.5mm}, decorate,ultra thick] (Z1-B) -- node[above] {} (X2-A);
+  	\draw [-stealth, decoration={snake, pre length=0.01mm, segment length=2mm, amplitude=0.3mm, post length=1.5mm}, decorate,ultra thick] (Z1-B) -- node[right=2em] {$\times$conn.} (Y2-A);
+  	
+  	 	\draw [-stealth, ultra thick] (X1-B) -- node[above] {Conv.} (X2-A);
+  	\draw [-stealth, ultra thick] (Y1-B) -- node[above=0.3em, fill=white, inner sep=0.1em] {Conv.} (Y2-A);
+  	\draw [-stealth, ultra thick] (Z1-B) -- node[above] {Conv.} (Z2-A);
+  
+ 
+  	\draw [-stealth, ultra thick] (X2-B) -- node[above] {Pool} (X3-A);
+  	\draw [-stealth, ultra thick] (Y2-B) -- node[above] {Pool} (Y3-A);
+  	\draw [-stealth, ultra thick] (Z2-B) -- node[above] {Pool} (Z3-A);
+  	
+  		\draw [-stealth, ultra thick] (X3-B) -- (Y4-A);
+  	\draw [-stealth, ultra thick] (Y3-B) -- (Y4-A);
+  	\draw [-stealth, ultra thick] (Z3-B) -- (Y4-A);
+  	
+  	\draw [decorate,decoration={brace,amplitude=15pt}, ultra thick, rotate around={238:(20.85,-3.275)}] (20.85,-6.2) -- node[above right=1.5em, xshift=-1.5em, yshift=1em, rotate=-30] {Merge} (20.85,-1.85);
+  	
+  	\node[circle, draw=black, fill=gray, right=5em of y4] (neur0) {};
+  	\node[circle, draw=black, fill=gray, above=1em of neur0] (neur1) {};
+  	\node[circle, draw=black, fill=gray, above=1em of neur1] (neur2) {};
+  	\node[circle, draw=black, fill=gray, above=1em of neur2] (neur3) {};
+  	\node[circle, draw=black, fill=gray, above=1em of neur3] (neur4) {};
+  	\node[circle, draw=black, fill=gray, above=1em of neur4] (neur5) {};
+  	\node[circle, draw=black, fill=gray, above=1em of neur5] (neur6) {};
+  	\node[circle, draw=black, fill=gray, above=1em of neur6] (neur7) {};
+  	\node[circle, draw=black, fill=gray, above=1em of neur7] (neur8) {};
+  	\node[circle, draw=black, fill=gray, above=1em of neur8] (neur9) {};
+  	\node[circle, draw=black, fill=gray, below=1em of neur0] (neur01) {};
+  	\node[circle, draw=black, fill=gray, below=1em of neur01] (neur02) {};
+  	\node[circle, draw=black, fill=gray, below=1em of neur02] (neur03) {};
+  	\node[circle, draw=black, fill=gray, below=1em of neur03] (neur04) {};
+  	\node[circle, draw=black, fill=gray, below=1em of neur04] (neur05) {};
+  	\node[circle, draw=black, fill=gray, below=1em of neur05] (neur06) {};
+  	\node[circle, draw=black, fill=gray, below=1em of neur06] (neur07) {};
+  	\node[circle, draw=black, fill=gray, below=1em of neur07] (neur08) {};
+  	\node[circle, draw=black, fill=gray, below=1em of neur08] (neur09) {};
+  	
+  	\draw [dashed, ultra thick] (Y4-V) -- (neur9.west);
+  	\draw [dashed, ultra thick] (Y4-W) -- (neur09.west);
+  	
+  	\node[circle, draw=black, fill=orange, right=10em of neur0] (neur00) {};
+  	\node[circle, draw=black, fill=orange, above=1em of neur00] (neur11) {};
+  	\node[circle, draw=black, fill=orange, above=1em of neur11] (neur12) {};
+  	\node[circle, draw=black, fill=orange, below=1em of neur00] (neur001) {};
+  	\node[circle, draw=black, fill=orange, below=1em of neur001] (neur002) {};
+  	
+  	\draw [-stealth, ultra thick] (neur9) -- node[above right] {FC} (neur12);
+  	
+  	
+  	\draw [-stealth, ultra thick] (neur9) -- (neur11);
+  	\draw [-stealth, ultra thick] (neur9) -- (neur00);
+  	\draw [-stealth, ultra thick] (neur9) -- (neur001);
+  	\draw [-stealth, ultra thick] (neur9) -- (neur002);
+  	
+  	 	\draw [-stealth, ultra thick] (neur09) -- (neur11);
+  	\draw [-stealth, ultra thick] (neur09) -- (neur00);
+  	\draw [-stealth, ultra thick] (neur09) -- (neur001);
+  	\draw [-stealth, ultra thick] (neur09) -- (neur12);
+  	
+
+  	
+  	\draw [-stealth, ultra thick] (neur8) -- (neur12);
+  	\draw [-stealth, ultra thick] (neur8) -- (neur11);
+  	\draw [-stealth, ultra thick] (neur8) -- (neur00);
+  	\draw [-stealth, ultra thick] (neur8) -- (neur001);
+  	\draw [-stealth, ultra thick] (neur8) -- (neur002);
+  	
+  	\draw [-stealth, ultra thick] (neur7) -- (neur12);
+  	\draw [-stealth, ultra thick] (neur7) -- (neur11);
+  	\draw [-stealth, ultra thick] (neur7) -- (neur00);
+  	\draw [-stealth, ultra thick] (neur7) -- (neur001);
+  	\draw [-stealth, ultra thick] (neur7) -- (neur002);
+	
+  	\draw [-stealth, ultra thick] (neur6) -- (neur12);
+  	\draw [-stealth, ultra thick] (neur6) -- (neur11);
+  	\draw [-stealth, ultra thick] (neur6) -- (neur00);
+  	\draw [-stealth, ultra thick] (neur6) -- (neur001);
+  	\draw [-stealth, ultra thick] (neur6) -- (neur002);
+
+	\draw [-stealth, ultra thick] (neur5) -- (neur12);
+  	\draw [-stealth, ultra thick] (neur5) -- (neur11);
+  	\draw [-stealth, ultra thick] (neur5) -- (neur00);
+  	\draw [-stealth, ultra thick] (neur5) -- (neur001);
+  	\draw [-stealth, ultra thick] (neur5) -- (neur002);
+
+	\draw [-stealth, ultra thick] (neur4) -- (neur12);
+  	\draw [-stealth, ultra thick] (neur4) -- (neur11);
+  	\draw [-stealth, ultra thick] (neur4) -- (neur00);
+  	\draw [-stealth, ultra thick] (neur4) -- (neur001);
+  	\draw [-stealth, ultra thick] (neur4) -- (neur002);
+  	
+  	\draw [-stealth, ultra thick] (neur3) -- (neur12);
+  	\draw [-stealth, ultra thick] (neur3) -- (neur11);
+  	\draw [-stealth, ultra thick] (neur3) -- (neur00);
+  	\draw [-stealth, ultra thick] (neur3) -- (neur001);
+  	\draw [-stealth, ultra thick] (neur3) -- (neur002);
+  	
+  	\draw [-stealth, ultra thick] (neur2) -- (neur12);
+  	\draw [-stealth, ultra thick] (neur2) -- (neur11);
+  	\draw [-stealth, ultra thick] (neur2) -- (neur00);
+  	\draw [-stealth, ultra thick] (neur2) -- (neur001);
+  	\draw [-stealth, ultra thick] (neur2) -- (neur002);
+  	
+  	\draw [-stealth, ultra thick] (neur1) -- (neur12);
+  	\draw [-stealth, ultra thick] (neur1) -- (neur11);
+  	\draw [-stealth, ultra thick] (neur1) -- (neur00);
+  	\draw [-stealth, ultra thick] (neur1) -- (neur001);
+  	\draw [-stealth, ultra thick] (neur1) -- (neur002);
+
+	\draw [-stealth, ultra thick] (neur0) -- (neur12);
+  	\draw [-stealth, ultra thick] (neur0) -- (neur11);
+  	\draw [-stealth, ultra thick] (neur0) -- (neur00);
+  	\draw [-stealth, ultra thick] (neur0) -- (neur001);
+  	\draw [-stealth, ultra thick] (neur0) -- (neur002);
+
+	  	\draw [-stealth, ultra thick] (neur08) -- (neur12);
+  	\draw [-stealth, ultra thick] (neur08) -- (neur11);
+  	\draw [-stealth, ultra thick] (neur08) -- (neur00);
+  	\draw [-stealth, ultra thick] (neur08) -- (neur001);
+  	\draw [-stealth, ultra thick] (neur08) -- (neur002);
+  	
+  	\draw [-stealth, ultra thick] (neur07) -- (neur12);
+  	\draw [-stealth, ultra thick] (neur07) -- (neur11);
+  	\draw [-stealth, ultra thick] (neur07) -- (neur00);
+  	\draw [-stealth, ultra thick] (neur07) -- (neur001);
+  	\draw [-stealth, ultra thick] (neur07) -- (neur002);
+	
+  	\draw [-stealth, ultra thick] (neur06) -- (neur12);
+  	\draw [-stealth, ultra thick] (neur06) -- (neur11);
+  	\draw [-stealth, ultra thick] (neur06) -- (neur00);
+  	\draw [-stealth, ultra thick] (neur06) -- (neur001);
+  	\draw [-stealth, ultra thick] (neur06) -- (neur002);
+
+	\draw [-stealth, ultra thick] (neur05) -- (neur12);
+  	\draw [-stealth, ultra thick] (neur05) -- (neur11);
+  	\draw [-stealth, ultra thick] (neur05) -- (neur00);
+  	\draw [-stealth, ultra thick] (neur05) -- (neur001);
+  	\draw [-stealth, ultra thick] (neur05) -- (neur002);
+
+	\draw [-stealth, ultra thick] (neur04) -- (neur12);
+  	\draw [-stealth, ultra thick] (neur04) -- (neur11);
+  	\draw [-stealth, ultra thick] (neur04) -- (neur00);
+  	\draw [-stealth, ultra thick] (neur04) -- (neur001);
+  	\draw [-stealth, ultra thick] (neur04) -- (neur002);
+  	
+  	\draw [-stealth, ultra thick] (neur03) -- (neur12);
+  	\draw [-stealth, ultra thick] (neur03) -- (neur11);
+  	\draw [-stealth, ultra thick] (neur03) -- (neur00);
+  	\draw [-stealth, ultra thick] (neur03) -- (neur001);
+  	\draw [-stealth, ultra thick] (neur03) -- (neur002);
+  	
+  	\draw [-stealth, ultra thick] (neur02) -- (neur12);
+  	\draw [-stealth, ultra thick] (neur02) -- (neur11);
+  	\draw [-stealth, ultra thick] (neur02) -- (neur00);
+  	\draw [-stealth, ultra thick] (neur02) -- (neur001);
+  	\draw [-stealth, ultra thick] (neur02) -- (neur002);
+  	
+  	\draw [-stealth, ultra thick] (neur01) -- (neur12);
+  	\draw [-stealth, ultra thick] (neur01) -- (neur11);
+  	\draw [-stealth, ultra thick] (neur01) -- (neur00);
+  	\draw [-stealth, ultra thick] (neur01) -- (neur001);
+  	\draw [-stealth, ultra thick] (neur01) -- (neur002);
+  	
+  	\node[right=5em of neur12] (out1) {};
+  	\node[right=5em of neur11] (out2) {};
+  	\node[right=5em of neur00] (out3) {};
+  	\node[right=5em of neur001] (out4) {};
+  	\node[right=5em of neur002] (out5) {};
+  	
+  	\draw[-stealth, ultra thick] (neur12) -- node[above] {Softmax} (out1);
+  	\draw[-stealth, ultra thick] (neur11) -- (out2);
+  	\draw[-stealth, ultra thick] (neur00) -- (out3);
+  	\draw[-stealth, ultra thick] (neur001) -- (out4);
+  	\draw[-stealth, ultra thick] (neur002) -- (out5);
+  	
+  	\toggletrue{redraw}
+  	\toggletrue{redraw2}
+  	
+  	\node[right=12em of i1] (x) {};
+  	\node[right=12em of i2] (y) {};
+  	\node[right=12em of i3] (z) {};
+  	\pic[right=12em of i1, fill=echoreg!10] (X) {cube={1.8/1.8/1/1}};
+  	\pic[right=12em of i2, fill=echoreg!10] (Y) {cube={1.8/1.8/1/1}};
+  	\pic[right=12em of i3, fill=echoreg!10] (Z) {cube={1.8/1.8/1/1}};
+  	
+  	
+  	\pic[right=12em of x, fill=red!10] (X1) {cube={0.9/0.9/1/1}};
+  	\pic[right=12em of y, fill=red!10] (Y1) {cube={0.9/0.9/1/1}};
+  	\pic[right=12em of z, fill=red!10] (Z1) {cube={0.9/0.9/1/1}};
+  	
+  	\pic[right=12em of x1, fill=echoreg!10] (X2) {cube={0.9/0.9/2/1}};
+  	\pic[right=12em of y1, fill=echoreg!10] (Y2) {cube={0.9/0.9/2/1}};
+  	\pic[right=12em of z1, fill=echoreg!10] (Z2) {cube={0.9/0.9/2/1}};
+  	
+  	\togglefalse{redraw2}
+  	
+  	\pic[right=10em of x2, fill=red!10] (X3) {cube={0.45/0.45/2/1}};
+  	\pic[right=10em of y2, fill=red!10] (Y3) {cube={0.45/0.45/2/1}};
+  	\pic[right=10em of z2, fill=red!10] (Z3) {cube={0.45/0.45/2/1}};
+  	
+  	\toggletrue{redraw2}
+  	
+  	\pic[right=10em of y3, fill=mymauve!10] (Y4) {cube={0.45/0.45/6/1}};
+
+\end{tikzpicture}
+\end{document}
