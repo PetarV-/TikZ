@@ -4,7 +4,7 @@
 
 ---
 
-Complete collection of my PGF/TikZ figures. (WIP)
+Complete collection of my PGF/TikZ figures. I will do my best to keep it updated as soon as new figures are published.
 
 ## Thanks
 
