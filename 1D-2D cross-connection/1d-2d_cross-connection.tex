@@ -1,0 +1,168 @@
+\documentclass[crop, tikz]{standalone}
+\usepackage{tikz}
+
+\usetikzlibrary{positioning}
+
+\begin{document}
+\begin{tikzpicture}
+	\node[circle, draw, fill=gray!40] (a11) at (0.8, 0.8) {};
+	\node[circle, draw, fill=gray!40] (a12) at (0.7, 0.7) {};
+	\node[circle, draw, fill=gray!40] (a13) at (0.6, 0.6) {};
+	\node[circle, draw, fill=gray!40] (a14) at (0.5, 0.5) {};
+	\node[circle, draw, fill=gray!40] (a15) at (0.4, 0.4) {};
+	\node[circle, draw, fill=gray!40] (a21) at (0.8, 1.0) {};
+	\node[circle, draw, fill=gray!40] (a22) at (0.7, 0.9) {};
+	\node[circle, draw, fill=gray!40] (a23) at (0.6, 0.8) {};
+	\node[circle, draw, fill=gray!40] (a24) at (0.5, 0.7) {};
+	\node[circle, draw, fill=gray!40] (a25) at (0.4, 0.6) {};
+	\node[circle, draw, fill=gray!40] (a31) at (0.8, 1.2) {};
+	\node[circle, draw, fill=gray!40] (a32) at (0.7, 1.1) {};
+	\node[circle, draw, fill=gray!40] (a33) at (0.6, 1.0) {};
+	\node[circle, draw, fill=gray!40] (a34) at (0.5, 0.9) {};
+	\node[circle, draw, fill=gray!40] (a35) at (0.4, 0.8) {};
+	\node[circle, draw, fill=gray!40] (a41) at (0.8, 1.4) {};
+	\node[circle, draw, fill=gray!40] (a42) at (0.7, 1.3) {};
+	\node[circle, draw, fill=gray!40] (a43) at (0.6, 1.2) {};
+	\node[circle, draw, fill=red!40] (a44) at (0.5, 1.1) {};
+	\node[circle, draw, fill=red!40] (a45) at (0.4, 1.0) {};
+	\node[circle, draw, fill=gray!40] (a51) at (0.8, 1.6) {};
+	\node[circle, draw, fill=gray!40] (a52) at (0.7, 1.5) {};
+	\node[circle, draw, fill=gray!40] (a53) at (0.6, 1.4) {};
+	\node[circle, draw, fill=red!40] (a54) at (0.5, 1.3) {};
+	\node[circle, draw, fill=red!40] (a55) at (0.4, 1.2) {};
+	
+	\node[circle, draw, fill=gray!40, inner sep=0.2em] (b1) at (0.6, -0.1) {};
+	\node[circle, draw, fill=gray!40, inner sep=0.2em] (b2) at (0.6, -0.3) {};
+	\node[circle, draw, fill=green!40, inner sep=0.2em] (b3) at (0.6, -0.5) {};
+	\node[circle, draw, fill=gray!40, inner sep=0.2em] (b4) at (0.6, -0.7) {};
+	\node[circle, draw, fill=gray!40, inner sep=0.2em] (b5) at (0.6, -0.9) {};
+	\node[circle, draw, fill=gray!40, inner sep=0.2em] (b6) at (0.6, -1.1) {};
+	\node[circle, draw, fill=gray!40, inner sep=0.2em] (b7) at (0.6, -1.3) {};
+	\node[circle, draw, fill=gray!40, inner sep=0.2em] (b8) at (0.6, -1.5) {};
+	\node[circle, draw, fill=gray!40, inner sep=0.2em] (b9) at (0.6, -1.7) {};
+	
+	\node[circle, draw, fill=gray!40] (c11) at (1.8, 0.8) {};
+	\node[circle, draw, fill=gray!40] (c12) at (1.7, 0.7) {};
+	\node[circle, draw, fill=gray!40] (c13) at (1.6, 0.6) {};
+	\node[circle, draw, fill=gray!40] (c14) at (1.5, 0.5) {};
+	\node[circle, draw, fill=gray!40] (c15) at (1.4, 0.4) {};
+	\node[circle, draw, fill=gray!40] (c21) at (1.8, 1.0) {};
+	\node[circle, draw, fill=gray!40] (c22) at (1.7, 0.9) {};
+	\node[circle, draw, fill=gray!40] (c23) at (1.6, 0.8) {};
+	\node[circle, draw, fill=gray!40] (c24) at (1.5, 0.7) {};
+	\node[circle, draw, fill=gray!40] (c25) at (1.4, 0.6) {};
+	\node[circle, draw, fill=gray!40] (c31) at (1.8, 1.2) {};
+	\node[circle, draw, fill=gray!40] (c32) at (1.7, 1.1) {};
+	\node[circle, draw, fill=gray!40] (c33) at (1.6, 1.0) {};
+	\node[circle, draw, fill=gray!40] (c34) at (1.5, 0.9) {};
+	\node[circle, draw, fill=gray!40] (c35) at (1.4, 0.8) {};
+	\node[circle, draw, fill=gray!40] (c41) at (1.8, 1.4) {};
+	\node[circle, draw, fill=gray!40] (c42) at (1.7, 1.3) {};
+	\node[circle, draw, fill=gray!40] (c43) at (1.6, 1.2) {};
+	\node[circle, draw, fill=gray!40] (c44) at (1.5, 1.1) {};
+	\node[circle, draw, fill=gray!40] (c45) at (1.4, 1.0) {};
+	\node[circle, draw, fill=gray!40] (c51) at (1.8, 1.6) {};
+	\node[circle, draw, fill=gray!40] (c52) at (1.7, 1.5) {};
+	\node[circle, draw, fill=gray!40] (c53) at (1.6, 1.4) {};
+	\node[circle, draw, fill=gray!40] (c54) at (1.5, 1.3) {};
+	\node[circle, draw, fill=green] (c55) at (1.4, 1.2) {};
+	
+	\node[circle, draw, fill=gray!40] (f11) at (2.1, 0.8) {};
+	\node[circle, draw, fill=gray!40] (f12) at (2.0, 0.7) {};
+	\node[circle, draw, fill=red!40] (f13) at (1.9, 0.6) {};
+	\node[circle, draw, fill=red!40] (f14) at (1.8, 0.5) {};
+	\node[circle, draw, fill=red!40] (f15) at (1.7, 0.4) {};
+	\node[circle, draw, fill=gray!40] (f21) at (2.1, 1.0) {};
+	\node[circle, draw, fill=gray!40] (f22) at (2.0, 0.9) {};
+	\node[circle, draw, fill=red!40] (f23) at (1.9, 0.8) {};
+	\node[circle, draw, fill=red!40] (f24) at (1.8, 0.7) {};
+	\node[circle, draw, fill=red!40] (f25) at (1.7, 0.6) {};
+	\node[circle, draw, fill=gray!40] (f31) at (2.1, 1.2) {};
+	\node[circle, draw, fill=gray!40] (f32) at (2.0, 1.1) {};
+	\node[circle, draw, fill=red!40] (f33) at (1.9, 1.0) {};
+	\node[circle, draw, fill=red!40] (f34) at (1.8, 0.9) {};
+	\node[circle, draw, fill=red!40] (f35) at (1.7, 0.8) {};
+	\node[circle, draw, fill=gray!40] (f41) at (2.1, 1.4) {};
+	\node[circle, draw, fill=gray!40] (f42) at (2.0, 1.3) {};
+	\node[circle, draw, fill=gray!40] (f43) at (1.9, 1.2) {};
+	\node[circle, draw, fill=gray!40] (f44) at (1.8, 1.1) {};
+	\node[circle, draw, fill=gray!40] (f45) at (1.7, 1.0) {};
+	\node[circle, draw, fill=gray!40] (f51) at (2.1, 1.6) {};
+	\node[circle, draw, fill=gray!40] (f52) at (2.0, 1.5) {};
+	\node[circle, draw, fill=gray!40] (f53) at (1.9, 1.4) {};
+	\node[circle, draw, fill=gray!40] (f54) at (1.8, 1.3) {};
+	\node[circle, draw, fill=gray!40] (f55) at (1.7, 1.2) {};
+	
+	
+	\node[circle, draw, fill=gray!40, inner sep=0.2em] (d1) at (1.6, -0.1) {};
+	\node[circle, draw, fill=gray!40, inner sep=0.2em] (d2) at (1.6, -0.3) {};
+	\node[circle, draw, fill=gray!40, inner sep=0.2em] (d3) at (1.6, -0.5) {};
+	\node[circle, draw, fill=gray!40, inner sep=0.2em] (d4) at (1.6, -0.7) {};
+	\node[circle, draw, fill=gray!40, inner sep=0.2em] (d5) at (1.6, -0.9) {};
+	\node[circle, draw, fill=gray!40, inner sep=0.2em] (d6) at (1.6, -1.1) {};
+	\node[circle, draw, fill=gray!40, inner sep=0.2em] (d7) at (1.6, -1.3) {};
+	\node[circle, draw, fill=gray!40, inner sep=0.2em] (d8) at (1.6, -1.5) {};
+	\node[circle, draw, fill=gray!40, inner sep=0.2em] (d9) at (1.6, -1.7) {};
+	
+	\node[circle, draw, fill=gray!40, inner sep=0.2em] (e1) at (1.8, -0.1) {};
+	\node[circle, draw, fill=gray!40, inner sep=0.2em] (e2) at (1.8, -0.3) {};
+	\node[circle, draw, fill=gray!40, inner sep=0.2em] (e3) at (1.8, -0.5) {};
+	\node[circle, draw, fill=gray!40, inner sep=0.2em] (e4) at (1.8, -0.7) {};
+	\node[circle, draw, fill=gray!40, inner sep=0.2em] (e5) at (1.8, -0.9) {};
+	\node[circle, draw, fill=gray!40, inner sep=0.2em] (e6) at (1.8, -1.1) {};
+	\node[circle, draw, fill=gray!40, inner sep=0.2em] (e7) at (1.8, -1.3) {};
+	\node[circle, draw, fill=gray!40, inner sep=0.2em] (e8) at (1.8, -1.5) {};
+	\node[circle, draw, fill=gray!40, inner sep=0.2em] (e9) at (1.8, -1.7) {};
+	
+	\draw[densely dotted, -] (c55) -- (a55.north);
+	\draw[densely dotted, -] (c55) -- (a54.north);
+	\draw[densely dotted, -] (c55) -- (a45.south);
+	\draw[densely dotted, -] (c55) -- (a44.south east);
+	\node[circle, draw, fill=gray!40] (c35) at (1.4, 0.8) {};
+	\node[circle, draw, fill=gray!40] (c45) at (1.4, 1.0) {};
+	\node[circle, draw, fill=green!40] (c55) at (1.4, 1.2) {};
+	\draw[densely dotted, -] (b3) -- (f35.north west);
+	\draw[densely dotted, -] (b3) -- (f33.north east);
+	\draw[densely dotted, -] (b3) -- (f13.south east);
+	\draw[densely dotted, -] (b3) -- (f15.south);
+	
+		\node[circle, draw, fill=gray!40] (f11) at (2.1, 0.8) {};
+	\node[circle, draw, fill=gray!40] (f12) at (2.0, 0.7) {};
+	\node[circle, draw, fill=red!40] (f13) at (1.9, 0.6) {};
+	\node[circle, draw, fill=red!40] (f14) at (1.8, 0.5) {};
+	\node[circle, draw, fill=red!40] (f15) at (1.7, 0.4) {};
+	\node[circle, draw, fill=gray!40] (f21) at (2.1, 1.0) {};
+	\node[circle, draw, fill=gray!40] (f22) at (2.0, 0.9) {};
+	\node[circle, draw, fill=red!40] (f23) at (1.9, 0.8) {};
+	\node[circle, draw, fill=red!40] (f24) at (1.8, 0.7) {};
+	\node[circle, draw, fill=red!40] (f25) at (1.7, 0.6) {};
+	\node[circle, draw, fill=gray!40] (f31) at (2.1, 1.2) {};
+	\node[circle, draw, fill=gray!40] (f32) at (2.0, 1.1) {};
+	\node[circle, draw, fill=red!40] (f33) at (1.9, 1.0) {};
+	\node[circle, draw, fill=red!40] (f34) at (1.8, 0.9) {};
+	\node[circle, draw, fill=red!40] (f35) at (1.7, 0.8) {};
+	\node[circle, draw, fill=gray!40] (f41) at (2.1, 1.4) {};
+	\node[circle, draw, fill=gray!40] (f42) at (2.0, 1.3) {};
+	\node[circle, draw, fill=gray!40] (f43) at (1.9, 1.2) {};
+	\node[circle, draw, fill=gray!40] (f44) at (1.8, 1.1) {};
+	\node[circle, draw, fill=gray!40] (f45) at (1.7, 1.0) {};
+	\node[circle, draw, fill=gray!40] (f51) at (2.1, 1.6) {};
+	\node[circle, draw, fill=gray!40] (f52) at (2.0, 1.5) {};
+	\node[circle, draw, fill=gray!40] (f53) at (1.9, 1.4) {};
+	\node[circle, draw, fill=gray!40] (f54) at (1.8, 1.3) {};
+	\node[circle, draw, fill=gray!40] (f55) at (1.7, 1.2) {};
+	
+	
+	
+	\foreach \x in {1,...,9}
+		\foreach \y in {1,...,9}
+			\draw[-, ultra thin] (b\x) -- (d\y);
+			
+	\foreach \x in {1,...,5}
+		\foreach \y in {1,...,5}
+			\foreach \z in {1,...,9}
+				\draw[-, ultra thin] (a\x\y) -- (e\z);
+			
+	
+\end{tikzpicture}
+\end{document}

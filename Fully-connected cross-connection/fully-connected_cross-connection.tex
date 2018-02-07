@@ -1,0 +1,147 @@
+\documentclass[crop, tikz]{standalone}
+\usepackage{tikz}
+
+\usetikzlibrary{decorations.pathmorphing,positioning}
+
+\definecolor{mynavy}{HTML}{000080}
+\definecolor{darkred}{HTML}{8B0000}
+
+\newcommand{\myGlobalTransformation}[2]
+{
+    \pgftransformcm{1}{0}{0.5}{0.25}{\pgfpoint{#1cm}{#2cm}}
+}
+
+\tikzstyle myBG=[line width=3pt,opacity=1.0]
+
+\begin{document}
+\begin{tikzpicture}
+
+	\begin{scope}
+		\myGlobalTransformation{0}{0};
+		\draw [black!50,fill=red!5] (-1, 0) rectangle (9,8);
+	\end{scope}
+	
+	\begin{scope}
+		\myGlobalTransformation{0}{4.25};
+		\draw [black!50,fill=blue!5] (-1, 0) rectangle (9,8);
+	\end{scope}
+    
+	\begin{scope}
+		\myGlobalTransformation{0}{0}
+		\node (N1) at (1,1) [circle,white,fill=darkred] {};
+		\node (N2) at (1,3) [circle,white,fill=darkred] {};
+		\node (N3) at (1,5) [circle,white,fill=darkred] {};
+		\node (N4) at (1,7) [circle,white,fill=darkred] {};
+		\node (N5) at (4,1) [circle,white,fill=darkred] {};
+		\node (N6) at (4,3) [circle,white,fill=darkred] {};
+		\node (N7) at (4,5) [circle,white,fill=darkred] {};
+		\node (N8) at (4,7) [circle,white,fill=darkred] {};
+		\node (N9) at (7,1) [circle,white,fill=darkred] {};
+		\node (N10) at (7,3) [circle,white,fill=darkred] {};
+		\node (N11) at (7,5) [circle,white,fill=darkred] {};
+		\node (N12) at (7,7) [circle,white,fill=darkred] {};
+		
+		\node (N13) at (8.5,1) {};
+		\node (N14) at (8.5,3) {};
+		\node (N15) at (8.5,5) {};
+		\node (N16) at (8.5,7) {};
+		
+		\node (N0) at (-0.5,1) {};
+		\node (N00) at (-0.5,3) {};
+		\node (N000) at (-0.5,5) {};
+		\node (N0000) at (-0.5,7) {};
+		
+		\foreach \x in {1,...,4}
+			\foreach \y in {5,...,8}
+    			\draw[-stealth, darkred, very thick] (N\x) -- (N\y); 
+    	
+		\foreach \x in {5,...,8}
+			\foreach \y in {9,...,12}
+    			\draw[-stealth, darkred, very thick] (N\x) -- (N\y); 
+    			
+    	\draw[-stealth, darkred, very thick] (N9) -- (N13);
+    	\draw[-stealth, darkred, very thick] (N10) -- (N14);
+    	\draw[-stealth, darkred, very thick] (N11) -- (N15);
+    	\draw[-stealth, darkred, very thick] (N12) -- (N16);
+    	\draw[-stealth, darkred, very thick] (N0) -- (N1);
+    	\draw[-stealth, darkred, very thick] (N00) -- (N2);
+    	\draw[-stealth, darkred, very thick] (N000) -- (N3);
+    	\draw[-stealth, darkred, very thick] (N0000) -- (N4);
+    			
+    	\begin{scope}	
+    	\pgftransformreset
+		\myGlobalTransformation{0}{4.25};
+    	\node (T9) at (7,1) {};
+    	\node (T10) at (7,3) {};
+    	\node (T11) at (7,5) {};
+    	\node (T12) at (7,7) {};
+    	\foreach \x in {5,...,8}
+			\foreach \y in {9,...,12}
+    			\draw[-stealth,very thick, decoration={snake, pre length=0.01mm, segment length=2mm, amplitude=0.3mm, post length=1.5mm}, decorate,] (N\x) -- (T\y); 
+    	\end{scope}
+	\end{scope}
+    
+	\begin{scope}
+		\myGlobalTransformation{0}{4.25}
+		\node (N1) at (1,1) [circle,white,fill=mynavy] {};
+		\node (N2) at (1,3) [circle,white,fill=mynavy] {};
+		\node (N3) at (1,5) [circle,white,fill=mynavy] {};
+		\node (N4) at (1,7) [circle,white,fill=mynavy] {};
+		\node (N5) at (4,1) [circle,white,fill=mynavy] {};
+		\node (N6) at (4,3) [circle,white,fill=mynavy] {};
+		\node (N7) at (4,5) [circle,white,fill=mynavy] {};
+		\node (N8) at (4,7) [circle,white,fill=mynavy] {};
+		
+		\node (N13) at (8.5,1) {};
+		\node (N14) at (8.5,3) {};
+		\node (N15) at (8.5,5) {};
+		\node (N16) at (8.5,7) {};
+		\node (N0) at (-0.5,1) {};
+		\node (N00) at (-0.5,3) {};
+		\node (N000) at (-0.5,5) {};
+		\node (N0000) at (-0.5,7) {};
+		
+		\begin{scope}	
+    	\pgftransformreset
+		\myGlobalTransformation{0}{0};
+    	\node (T9) at (7,1) {};
+    	\node (T10) at (7,3) {};
+    	\node (T11) at (7,5) {};
+    	\node (T12) at (7,7) {};
+    	\foreach \x in {5,...,8}
+			\foreach \y in {9,...,12}
+    			\draw[-stealth,very thick, decoration={snake, pre length=0.01mm, segment length=2mm, amplitude=0.3mm, post length=1.5mm}, decorate,] (N\x) -- (T\y); 
+    	\end{scope}
+    	
+    	
+		\node (N9) at (7,1) [circle,white,fill=mynavy] {};
+		\node (N10) at (7,3) [circle,white,fill=mynavy] {};
+		\node (N11) at (7,5) [circle,white,fill=mynavy] {};
+		\node (N12) at (7,7) [circle,white,fill=mynavy] {};
+    	\draw[-stealth, mynavy, very thick] (N0) -- (N1);
+    	\draw[-stealth, mynavy, very thick] (N00) -- (N2);
+    	\draw[-stealth, mynavy, very thick] (N000) -- (N3);
+    	\draw[-stealth, mynavy, very thick] (N0000) -- (N4);
+        	
+		\foreach \x in {1,...,4}
+			\foreach \y in {5,...,8}
+    			\draw[-stealth, mynavy, very thick] (N\x) -- (N\y); 
+    	
+		\foreach \x in {5,...,8}
+			\foreach \y in {9,...,12}
+    			\draw[-stealth, mynavy, very thick] (N\x) -- (N\y);
+    	
+    	\draw[-stealth, mynavy, very thick] (N9) -- (N13);
+    	\draw[-stealth, mynavy, very thick] (N10) -- (N14);
+    	\draw[-stealth, mynavy, very thick] (N11) -- (N15);
+    	\draw[-stealth, mynavy, very thick] (N12) -- (N16);
+    	
+	\end{scope}
+     
+	\node at (11, 0.3) {\emph{\textbf{stream 1}}};
+	\node at (1, 6) {\emph{\textbf{stream 2}}};
+	
+	\node at (10.8, 3.5) {\emph{\textbf{$\times$-connections}}};
+
+\end{tikzpicture}
+\end{document}
