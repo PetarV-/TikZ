@@ -1,0 +1,91 @@
+\documentclass[crop,tikz]{standalone}
+\usepackage{tikz}
+
+\usetikzlibrary{arrows,decorations.pathmorphing,backgrounds,positioning}
+
+\definecolor{echoreg}{HTML}{2cb1e1}
+\definecolor{olivegreen}{rgb}{0,0.6,0}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\usepackage{etoolbox}
+
+\newtoggle{redraw}
+\newtoggle{redraw2}
+
+\tikzset{%
+pics/cube/.style args={#1/#2/#3/#4}{code={%
+	\begin{scope}[line width=#4mm]
+	\begin{scope}
+	\clip (-#1,-#2,0) -- (#1,-#2,0) -- (#1,#2,0) -- (-#1,#2,0) -- cycle;
+	\filldraw (-#1,-#2,0) -- (#1,-#2,0) -- (#1,#2,0) -- (-#1,#2,0) -- cycle;
+	\end{scope}
+\iftoggle{redraw}{%
+}{%
+	\begin{scope}
+	\clip (-#1,-#2,0) -- (-#1-#3,-#2,-#3) -- (-#1-#3,#2,-#3) -- (-#1,#2,0) -- cycle;
+	\filldraw (-#1,-#2,0) -- (-#1-#3,-#2,-#3) -- (-#1-#3,#2,-#3) -- (-#1,#2,0) -- cycle;
+	\end{scope}
+}
+\iftoggle{redraw2}{%
+}{
+	\begin{scope}
+	\clip (-#1,#2,0) -- (-#1-#3,#2,-#3) -- (#1-#3,#2,-#3) -- (#1,#2,0) -- cycle;
+	\filldraw (-#1,#2,0) -- (-#1-#3,#2,-#3) -- (#1-#3,#2,-#3) -- (#1,#2,0) -- cycle;
+	\end{scope}
+}
+	\node[inner sep=0] (-A) at (-#1-#3*0.5, 0, -#3*0.5) {};
+	\node[inner sep=0] (-B) at (#1-#3*0.5, 0, -#3*0.5) {};
+	
+	\coordinate (-V) at (#1, #2);
+	\coordinate (-W) at (#1, -#2);
+	\end{scope}
+}}}
+
+\begin{document}
+\begin{tikzpicture}
+
+	\node[] (i2) {};
+	\pic[fill=green!50] (I2) {cube={1.8/1.8/0.4/1}};
+	
+	\togglefalse{redraw}
+	\togglefalse{redraw2}
+	
+  	\node[right=16em of i2] (y) {};
+  	
+  	\pic[right=16em of i2, fill=echoreg!50] (Y) {cube={1.8/1.8/1/1}};
+  	
+  	\node[right=12em of y] (y1) {};
+  	\pic[right=12em of y, fill=red!50] (Y1) {cube={0.9/0.9/1/1}};
+  	
+  	%transparent node to ease the arrow drawing
+  	\pic[right=12em of y1, draw=echoreg!0, fill=echoreg!0] (Y2) {cube={0.9/0.9/2/1}};
+  	\node[right=12em of y1] (y3) {};
+  	\pic[below right=1.1em and 13em of y1, fill=mymauve!30] (Y5) {cube={0.45/0.45/2/1}};
+  	\pic[below right=1.1em and 10em of y1, fill=mymauve!30] (Y6) {cube={0.45/0.45/2/1}};
+  	\pic[above right=1.1em and 13em of y1, fill=mymauve!30] (Y4) {cube={0.45/0.45/2/1}};
+  	\pic[above right=1.1em and 10em of y1, fill=mymauve!30] (Y3) {cube={0.45/0.45/2/1}};
+  	
+  	\draw [-stealth, ultra thick] (I2-B) -- node[above] {Conv.} (Y-A);
+  	
+  	\draw [-stealth, ultra thick] (Y-B) -- node[above] {Pool} (Y1-A);
+  	
+  	\draw [-stealth, ultra thick] (Y1-B) -- node[above=0.3em, inner sep=0.1em, xshift=-1em] {Conv.} (Y2-A);
+  	
+  	
+  	\color{black}
+  	
+  	\toggletrue{redraw}
+  	\toggletrue{redraw2}
+  	
+  	\pic[right=16em of i2, fill=echoreg!50] (Y) {cube={1.8/1.8/1/1}};
+  	
+  	\pic[right=12em of y, fill=red!50] (Y1) {cube={0.9/0.9/1/1}};
+  	
+	\node[] (i2) {\LARGE ${\bf input}$};
+  	\node[above right=0.1em and 9em of y1] (z2) {\LARGE $\vec{o}_1$};
+  	\node[below right=0em and 9em of y1] (z2) {\LARGE $\vec{o}_3$};
+  	\node[above right=0.1em and 12em of y1] (z2) {\LARGE $\vec{o}_2$};
+  	\node[below right=0em and 12em of y1] (z2) {\LARGE $\vec{o}_4$};
+
+\end{tikzpicture}
+\end{document}
