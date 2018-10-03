@@ -11,4 +11,5 @@ An overview of the generic form of the self-attention operation.
 ## Source
 
 [Relational Learning](http://www.cl.cam.ac.uk/~pv273/slides/MILA-RN.pdf), *MILA Graph Representation Group Meeting*
+
 Original version of this figure is by [Andreea Deac](https://github.com/andreeadeac22)---with many thanks!
