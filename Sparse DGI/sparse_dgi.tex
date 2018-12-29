@@ -1,0 +1,331 @@
+\documentclass[crop, tikz]{standalone}
+\usepackage{tikz}
+
+\usetikzlibrary{calc,patterns,positioning,decorations.pathmorphing}
+
+\definecolor{mygreen}{HTML}{006400}
+\definecolor{mymauve}{rgb}{0.58,0,0.82} 
+\definecolor{echodrk}{HTML}{0099cc}
+
+\begin{document}
+\begin{tikzpicture}
+	\node[circle, fill=mymauve, draw=mymauve, inner sep=0.1em, thick] (h1) {\textcolor{white}{$\vec{h}_1$}};
+	\node[circle, draw=lightgray, thick] (000) at ([shift=({50:3 em})]h1) {};
+	\node[circle, draw=mymauve, pattern=north east lines,  pattern color=mymauve, thick] (001) at ([shift=({95:3 em})]h1) {};
+	\node[circle, draw=mymauve, pattern=north east lines, pattern color=mymauve, thick] (002) at ([shift=({160:3 em})]h1) {};
+	\node[circle, draw=lightgray, thick] (003) at ([shift=({220:3 em})]h1) {};
+	\node[circle, draw=lightgray, thick] (004) at ([shift=({265:3 em})]h1) {};
+	\node[circle, draw=mymauve, pattern=north east lines, pattern color=mymauve, thick] (005) at ([shift=({350:3 em})]h1) {};
+		
+	\node[circle, draw=mymauve, pattern=north east lines, pattern color=mymauve, thick] (010) at ([shift=({85:6 em})]h1) {};
+	\node[circle, draw=mymauve, pattern=north east lines, pattern color=mymauve, thick] (011) at ([shift=({125:6 em})]h1) {};
+	\node[circle, draw=mymauve, pattern=north east lines, pattern color=mymauve, thick] (012) at ([shift=({150:6 em})]h1) {};
+	\node[circle, draw=mymauve, pattern=north east lines, pattern color=mymauve, thick] (013) at ([shift=({170:6 em})]h1) {};
+	\node[circle, lightgray, draw, thick] (014) at ([shift=({190:6 em})]h1) {};
+	\node[circle, lightgray,draw, thick] (015) at ([shift=({210:6 em})]h1) {};
+	\node[circle, draw=mymauve, pattern=north east lines, pattern color=mymauve, thick] (016) at ([shift=({315:6 em})]h1) {};
+	\node[circle, lightgray,draw, thick] (017) at ([shift=({340:6 em})]h1) {};
+	\node[circle, draw=mymauve, pattern=north east lines, pattern color=mymauve, thick] (018) at ([shift=({365:6 em})]h1) {};
+	\node[circle,lightgray, draw, thick] (019) at ([shift=({385:6 em})]h1) {};
+		
+	\draw[-, thick, lightgray] (h1) -- (000);
+	\draw[stealth-, thick, mymauve] (h1) -- (001);
+	\draw[stealth-, thick, mymauve] (h1) -- (002);
+	\draw[-, thick, lightgray] (h1) -- (003);
+	\draw[-, thick, lightgray] (h1) -- (004);
+	\draw[stealth-, thick, mymauve] (h1) -- (005);
+		
+	\draw[stealth-, thick, mymauve] (001) -- (010);
+	\draw[stealth-, thick, mymauve] (001) -- (011);
+	\draw[stealth-, thick, mymauve] (002) -- (012);
+	\draw[stealth-, thick, mymauve] (002) -- (013);
+	\draw[-, thick, lightgray] (002) -- (014);
+	\draw[-, thick, lightgray] (002) -- (015);
+	\draw[stealth-, thick, mymauve] (005) -- (016);
+	\draw[-, thick, lightgray] (005) -- (017);
+	\draw[stealth-, thick, mymauve] (005) -- (018);
+	\draw[-, thick, lightgray] (005) -- (019);
+	
+	\draw[-, densely dashed, lightgray, thick] (000) -- ($(h1) + ({30:5 em})$);
+	\draw[-, densely dashed, lightgray, thick] (000) -- ($(h1) + ({40:5 em})$);
+	\draw[-, densely dashed, lightgray, thick] (000) -- ($(h1) + ({50:5 em})$);
+	\draw[-, densely dashed, lightgray, thick] (000) -- ($(h1) + ({60:5 em})$);
+	\draw[-, densely dashed, lightgray, thick] (003) -- ($(h1) + ({220:5 em})$);
+	
+	\draw[-, densely dashed, lightgray, thick] (004) -- ($(h1) + ({230:5 em})$);
+	\draw[-, densely dashed, lightgray, thick] (004) -- ($(h1) + ({240:5 em})$);
+	\draw[-, densely dashed, lightgray, thick] (004) -- ($(h1) + ({250:5 em})$);
+	\draw[-, densely dashed, lightgray, thick] (004) -- ($(h1) + ({260:5 em})$);
+	\draw[-, densely dashed, lightgray, thick] (004) -- ($(h1) + ({270:5 em})$);
+	\draw[-, densely dashed, lightgray, thick] (004) -- ($(h1) + ({280:5 em})$);
+	
+	\draw[-, densely dashed, lightgray, thick] (010) -- ($(h1) + ({70:8 em})$);
+	\draw[-, densely dashed, lightgray, thick] (010) -- ($(h1) + ({75:8 em})$);
+	\draw[-, densely dashed, lightgray, thick] (010) -- ($(h1) + ({80:8 em})$);
+	\draw[-, densely dashed, lightgray, thick] (010) -- ($(h1) + ({85:8 em})$);
+	\draw[-, densely dashed, lightgray, thick] (010) -- ($(h1) + ({90:8 em})$);
+	\draw[-, densely dashed, lightgray, thick] (010) -- ($(h1) + ({95:8 em})$);
+	
+	\draw[-, densely dashed, lightgray, thick] (011) -- ($(h1) + ({110:8 em})$);
+	\draw[-, densely dashed, lightgray, thick] (011) -- ($(h1) + ({120:8 em})$);
+	\draw[-, densely dashed, lightgray, thick] (011) -- ($(h1) + ({130:8 em})$);
+	
+	\draw[-, densely dashed, lightgray, thick] (012) -- ($(h1) + ({150:8 em})$);
+	\draw[-, densely dashed, lightgray, thick] (012) -- ($(h1) + ({160:8 em})$);
+	
+	\draw[-, densely dashed, lightgray, thick] (013) -- ($(h1) + ({165:8 em})$);
+	\draw[-, densely dashed, lightgray, thick] (013) -- ($(h1) + ({170:8 em})$);
+	\draw[-, densely dashed, lightgray, thick] (013) -- ($(h1) + ({175:8 em})$);
+	\draw[-, densely dashed, lightgray, thick] (013) -- ($(h1) + ({180:8 em})$);
+	
+	\draw[-, densely dashed, lightgray, thick] (014) -- ($(h1) + ({190:8 em})$);
+	
+	\draw[-, densely dashed, lightgray, thick] (015) -- ($(h1) + ({200:8 em})$);
+	\draw[-, densely dashed, lightgray, thick] (015) -- ($(h1) + ({205:8 em})$);
+	\draw[-, densely dashed, lightgray, thick] (015) -- ($(h1) + ({210:8 em})$);
+	\draw[-, densely dashed, lightgray, thick] (015) -- ($(h1) + ({215:8 em})$);
+	\draw[-, densely dashed, lightgray, thick] (015) -- ($(h1) + ({220:8 em})$);
+	\draw[-, densely dashed, lightgray, thick] (015) -- ($(h1) + ({225:8 em})$);
+	\draw[-, densely dashed, lightgray, thick] (015) -- ($(h1) + ({230:8 em})$);
+	
+	\draw[-, densely dashed, lightgray, thick] (016) -- ($(h1) + ({300:8 em})$);
+	\draw[-, densely dashed, lightgray, thick] (016) -- ($(h1) + ({305:8 em})$);
+	\draw[-, densely dashed, lightgray, thick] (016) -- ($(h1) + ({310:8 em})$);
+	\draw[-, densely dashed, lightgray, thick] (016) -- ($(h1) + ({315:8 em})$);
+	\draw[-, densely dashed, lightgray, thick] (016) -- ($(h1) + ({320:8 em})$);
+	\draw[-, densely dashed, lightgray, thick] (016) -- ($(h1) + ({325:8 em})$);
+	\draw[-, densely dashed, lightgray, thick] (016) -- ($(h1) + ({330:8 em})$);
+	\draw[-, densely dashed, lightgray, thick] (016) -- ($(h1) + ({335:8 em})$);
+	
+	\draw[-, densely dashed, lightgray, thick] (017) -- ($(h1) + ({340:8 em})$);
+	\draw[-, densely dashed, lightgray, thick] (017) -- ($(h1) + ({350:8 em})$);
+	
+	\draw[-, densely dashed, lightgray, thick] (018) -- ($(h1) + ({355:8 em})$);
+	\draw[-, densely dashed, lightgray, thick] (018) -- ($(h1) + ({365:8 em})$);
+	\draw[-, densely dashed, lightgray, thick] (018) -- ($(h1) + ({375:8 em})$);
+	
+	\draw[-, densely dashed, lightgray, thick] (019) -- ($(h1) + ({380:8 em})$);
+	\draw[-, densely dashed, lightgray, thick] (019) -- ($(h1) + ({385:8 em})$);
+	
+	\node[circle, draw, densely dotted, mymauve, thick, inner sep=1em] at (h1) {};
+	\node[circle, draw, densely dotted, mymauve, thick, inner sep=3em] at (h1) {};
+	\node[circle, draw, densely dotted, mymauve, thick, inner sep=5em] at (h1) {};
+	
+	\node[circle, fill=mygreen, draw=mygreen, inner sep=0.1em, thick, right=15em of h1] (h2) {\textcolor{white}{$\vec{h}_2$}};
+	\node[circle, lightgray, draw, thick] (100) at ([shift=({10:3 em})]h2) {};
+	\node[circle, lightgray, draw, thick] (101) at ([shift=({45:3 em})]h2) {};
+	\node[circle, draw=mygreen, pattern=north east lines, pattern color=mygreen, thick] (102) at ([shift=({135:3 em})]h2) {};
+	\node[circle, draw=mygreen, pattern=north east lines, pattern color=mygreen, thick] (103) at ([shift=({225:3 em})]h2) {};
+	\node[circle, draw=mygreen, pattern=north east lines, pattern color=mygreen, thick] (104) at ([shift=({315:3 em})]h2) {};	
+	\node[circle,lightgray, draw, thick] (110) at ([shift=({105:6 em})]h2) {};
+	\node[circle, draw=mygreen, pattern=north east lines, pattern color=mygreen, thick] (111) at ([shift=({135:6 em})]h2) {};
+	\node[circle, draw=mygreen, pattern=north east lines, pattern color=mygreen, thick] (112) at ([shift=({160:6 em})]h2) {};
+	\node[circle,lightgray, draw, thick] (113) at ([shift=({180:6 em})]h2) {};
+	\node[circle,lightgray, draw, thick] (114) at ([shift=({200:6 em})]h2) {};
+	\node[circle, draw=mygreen, pattern=north east lines, pattern color=mygreen, thick] (115) at ([shift=({220:6 em})]h2) {};
+	\node[circle,lightgray, draw, thick] (116) at ([shift=({240:6 em})]h2) {};
+	\node[circle, draw=mygreen, pattern=north east lines, pattern color=mygreen, thick] (117) at ([shift=({255:6 em})]h2) {};
+	\node[circle,lightgray, draw, thick] (118) at ([shift=({290:6 em})]h2) {};
+	\node[circle,lightgray, draw, thick] (119) at ([shift=({305:6 em})]h2) {};
+	\node[circle, draw=mygreen, pattern=north east lines, pattern color=mygreen, thick] (1110) at ([shift=({325:6 em})]h2) {};
+	\node[circle,lightgray, draw, thick] (1111) at ([shift=({340:6 em})]h2) {};
+	\node[circle, draw=mygreen, pattern=north east lines, pattern color=mygreen, thick] (1112) at ([shift=({355:6 em})]h2) {};
+	
+	\draw[-, thick, lightgray] (h2) -- (100);
+	\draw[-, thick, lightgray] (h2) -- (101);
+	\draw[stealth-, thick, mygreen] (h2) -- (102);
+	\draw[stealth-, thick, mygreen] (h2) -- (103);
+	\draw[stealth-, thick, mygreen] (h2) -- (104);
+	
+	\draw[-, thick, lightgray] (102) -- (110);
+	\draw[stealth-, thick, mygreen] (102) -- (111);
+	\draw[stealth-, thick, mygreen] (102) -- (112);
+	\draw[-, thick, lightgray] (102) -- (113);
+	\draw[-, thick, lightgray] (103) -- (114);
+	\draw[stealth-, thick, mygreen] (103) -- (115);
+	\draw[-, thick, lightgray] (103) -- (116);
+	\draw[stealth-, thick, mygreen] (103) -- (117);
+	\draw[-, thick, lightgray] (104) -- (118);
+	\draw[-, thick, lightgray] (104) -- (119);
+	\draw[stealth-, thick, mygreen] (104) -- (1110);
+	\draw[-, thick, lightgray] (104) -- (1111);
+	\draw[stealth-, thick, mygreen] (104) -- (1112);
+	
+	
+	\draw[-, densely dashed, lightgray, thick] (100) -- ($(h2) + ({5:5 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (100) -- ($(h2) + ({10:5 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (101) -- ($(h2) + ({25:5 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (101) -- ($(h2) + ({30:5 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (101) -- ($(h2) + ({35:5 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (101) -- ($(h2) + ({40:5 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (101) -- ($(h2) + ({45:5 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (101) -- ($(h2) + ({50:5 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (101) -- ($(h2) + ({55:5 em})$);	
+	
+	
+	\draw[-, densely dashed, lightgray, thick] (110) -- ($(h2) + ({95:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (110) -- ($(h2) + ({105:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (110) -- ($(h2) + ({115:8 em})$);	
+	
+	\draw[-, densely dashed, lightgray, thick] (112) -- ($(h2) + ({140:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (112) -- ($(h2) + ({150:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (112) -- ($(h2) + ({160:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (112) -- ($(h2) + ({170:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (112) -- ($(h2) + ({180:8 em})$);	
+	
+	\draw[-, densely dashed, lightgray, thick] (113) -- ($(h2) + ({185:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (113) -- ($(h2) + ({190:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (113) -- ($(h2) + ({195:8 em})$);	
+	
+	\draw[-, densely dashed, lightgray, thick] (114) -- ($(h2) + ({200:8 em})$);	
+	
+	\draw[-, densely dashed, lightgray, thick] (115) -- ($(h2) + ({205:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (115) -- ($(h2) + ({210:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (115) -- ($(h2) + ({215:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (115) -- ($(h2) + ({220:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (115) -- ($(h2) + ({225:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (115) -- ($(h2) + ({230:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (116) -- ($(h2) + ({240:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (116) -- ($(h2) + ({245:8 em})$);	
+	
+	\draw[-, densely dashed, lightgray, thick] (117) -- ($(h2) + ({250:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (117) -- ($(h2) + ({255:8 em})$);
+	\draw[-, densely dashed, lightgray, thick] (117) -- ($(h2) + ({260:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (117) -- ($(h2) + ({265:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (117) -- ($(h2) + ({270:8 em})$);	
+	
+	
+	\draw[-, densely dashed, lightgray, thick] (118) -- ($(h2) + ({285:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (118) -- ($(h2) + ({290:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (118) -- ($(h2) + ({295:8 em})$);	
+	
+	\draw[-, densely dashed, lightgray, thick] (119) -- ($(h2) + ({300:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (119) -- ($(h2) + ({305:8 em})$);	
+	
+	\draw[-, densely dashed, lightgray, thick] (1110) -- ($(h2) + ({315:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (1110) -- ($(h2) + ({325:8 em})$);	
+	
+	\draw[-, densely dashed, lightgray, thick] (1111) -- ($(h2) + ({332:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (1111) -- ($(h2) + ({335:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (1111) -- ($(h2) + ({337:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (1111) -- ($(h2) + ({340:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (1111) -- ($(h2) + ({342:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (1111) -- ($(h2) + ({345:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (1111) -- ($(h2) + ({347:8 em})$);	
+	
+	\draw[-, densely dashed, lightgray, thick] (1112) -- ($(h2) + ({350:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (1112) -- ($(h2) + ({355:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (1112) -- ($(h2) + ({360:8 em})$);	
+	
+	\node[circle, draw, densely dotted, mygreen, thick, inner sep=1em] at (h2) {};
+	\node[circle, draw, densely dotted, mygreen, thick, inner sep=3em] at (h2) {};
+	\node[circle, draw, densely dotted, mygreen, thick, inner sep=5em] at (h2) {};
+	
+	
+	\node[circle, fill=echodrk, draw=echodrk, inner sep=0.1em, thick, right=15em of h2] (h3) {\textcolor{white}{$\vec{h}_3$}};
+	\node[circle, draw=echodrk, pattern=north east lines, pattern color=echodrk, thick] (200) at ([shift=({50:3 em})]h3) {};
+	\node[circle, draw=lightgray, thick] (201) at ([shift=({100:3 em})]h3) {};
+	\node[circle, draw=lightgray, thick] (202) at ([shift=({140:3 em})]h3) {};
+	\node[circle, draw=lightgray, thick] (203) at ([shift=({220:3 em})]h3) {};
+	\node[circle, draw=echodrk, pattern=north east lines, pattern color=echodrk, thick] (204) at ([shift=({270:3 em})]h3) {};
+	\node[circle, draw=echodrk, pattern=north east lines, pattern color=echodrk, thick] (205) at ([shift=({330:3 em})]h3) {};
+	\node[circle, draw=echodrk, pattern=north east lines, pattern color=echodrk, thick] (210) at ([shift=({40:6 em})]h3) {};
+	\node[circle, draw=echodrk, pattern=north east lines, pattern color=echodrk, thick] (211) at ([shift=({55:6 em})]h3) {};
+	\node[circle, draw=lightgray, thick] (212) at ([shift=({75:6 em})]h3) {};
+	\node[circle, draw=echodrk, pattern=north east lines, pattern color=echodrk, thick] (213) at ([shift=({255:6 em})]h3) {};
+	\node[circle, draw=echodrk, pattern=north east lines, pattern color=echodrk, thick] (214) at ([shift=({265:6 em})]h3) {};
+	\node[circle, draw=lightgray, thick] (215) at ([shift=({280:6 em})]h3) {};
+	\node[circle, draw=lightgray, thick] (216) at ([shift=({290:6 em})]h3) {};
+	\node[circle, draw=echodrk, pattern=north east lines, pattern color=echodrk, thick] (217) at ([shift=({305:6 em})]h3) {};
+	\node[circle, draw=lightgray, thick] (218) at ([shift=({320:6 em})]h3) {};
+	\node[circle, draw=lightgray, thick] (219) at ([shift=({340:6 em})]h3) {};
+	\node[circle, draw=echodrk, pattern=north east lines, pattern color=echodrk, thick] (2110) at ([shift=({355:6 em})]h3) {};
+	
+	\draw[stealth-, thick, echodrk] (h3) -- (200);
+	\draw[-, thick, lightgray] (h3) -- (201);
+	\draw[-, thick, lightgray] (h3) -- (202);
+	\draw[-, thick, lightgray] (h3) -- (203);
+	\draw[stealth-, thick, echodrk] (h3) -- (204);
+	\draw[stealth-, thick, echodrk] (h3) -- (205);
+	
+	\draw[stealth-, thick, echodrk] (200) -- (210);
+	\draw[stealth-, thick, echodrk] (200) -- (211);
+	\draw[-, thick, lightgray] (200) -- (212);
+	\draw[stealth-, thick, echodrk] (204) -- (213);
+	\draw[stealth-, thick, echodrk] (204) -- (214);
+	\draw[-, thick, lightgray] (204) -- (215);
+	\draw[-, thick, lightgray] (204) -- (216);
+	\draw[stealth-, thick, echodrk] (205) -- (217);
+	\draw[-, thick, lightgray] (205) -- (218);
+	\draw[-, thick, lightgray] (205) -- (219);
+	\draw[stealth-, thick, echodrk] (205) -- (2110);
+
+	
+	
+	\draw[-, densely dashed, lightgray, thick] (202) -- ($(h3) + ({105:5 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (202) -- ($(h3) + ({125:5 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (202) -- ($(h3) + ({145:5 em})$);	
+	
+	\draw[-, densely dashed, lightgray, thick] (203) -- ($(h3) + ({190:5 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (203) -- ($(h3) + ({195:5 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (203) -- ($(h3) + ({200:5 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (203) -- ($(h3) + ({205:5 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (203) -- ($(h3) + ({210:5 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (203) -- ($(h3) + ({215:5 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (203) -- ($(h3) + ({220:5 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (203) -- ($(h3) + ({225:5 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (203) -- ($(h3) + ({230:5 em})$);	
+	
+	\draw[-, densely dashed, lightgray, thick] (210) -- ($(h3) + ({30:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (210) -- ($(h3) + ({50:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (211) -- ($(h3) + ({55:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (211) -- ($(h3) + ({60:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (211) -- ($(h3) + ({65:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (211) -- ($(h3) + ({70:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (212) -- ($(h3) + ({80:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (212) -- ($(h3) + ({90:8 em})$);	
+	
+	\draw[-, densely dashed, lightgray, thick] (213) -- ($(h3) + ({235:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (213) -- ($(h3) + ({240:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (213) -- ($(h3) + ({245:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (213) -- ($(h3) + ({250:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (213) -- ($(h3) + ({255:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (213) -- ($(h3) + ({260:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (214) -- ($(h3) + ({265:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (214) -- ($(h3) + ({270:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (214) -- ($(h3) + ({275:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (215) -- ($(h3) + ({280:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (215) -- ($(h3) + ({285:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (216) -- ($(h3) + ({290:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (216) -- ($(h3) + ({295:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (216) -- ($(h3) + ({300:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (217) -- ($(h3) + ({305:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (217) -- ($(h3) + ({310:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (218) -- ($(h3) + ({315:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (218) -- ($(h3) + ({325:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (219) -- ($(h3) + ({330:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (2110) -- ($(h3) + ({335:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (2110) -- ($(h3) + ({340:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (2110) -- ($(h3) + ({345:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (2110) -- ($(h3) + ({350:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (2110) -- ($(h3) + ({355:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (2110) -- ($(h3) + ({360:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (2110) -- ($(h3) + ({365:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (2110) -- ($(h3) + ({370:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (2110) -- ($(h3) + ({375:8 em})$);
+	\draw[-, densely dashed, lightgray, thick] (2110) -- ($(h3) + ({380:8 em})$);	
+	\draw[-, densely dashed, lightgray, thick] (2110) -- ($(h3) + ({385:8 em})$);	
+	
+	\node[circle, draw, densely dotted, echodrk, thick, inner sep=1em] at (h3) {};
+	\node[circle, draw, densely dotted, echodrk, thick, inner sep=3em] at (h3) {};
+	\node[circle, draw, densely dotted, echodrk, thick, inner sep=5em] at (h3) {};
+
+	
+	\node[rectangle, below=10em of h2, fill=lightgray, draw=black, very thick] (s) {\Large $\vec{s}$};
+	
+	\draw[-stealth,  mymauve, ultra thick] (h1) edge[bend right=40, decoration={snake, pre length=0.01mm, segment length=2mm, amplitude=0.3mm, post length=1.5mm}, decorate] (s);
+	\draw[-stealth,  mygreen, ultra thick] (h2) edge[bend left=18, decoration={snake, pre length=0.01mm, segment length=2mm, amplitude=0.3mm, post length=1.5mm}, decorate] (s.north);
+	\draw[-stealth,  echodrk, ultra thick] (h3) edge[bend left=22, decoration={snake, pre length=0.01mm, segment length=2mm, amplitude=0.3mm, post length=1.5mm}, decorate] (s.east);
+	
+\end{tikzpicture}
+\end{document}
