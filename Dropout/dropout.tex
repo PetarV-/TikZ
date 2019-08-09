@@ -1,7 +1,4 @@
-\documentclass[crop, tikz]{standalone}
-\usepackage{tikz}
-\usepackage{bm}
-\usepackage{relsize}
+\documentclass[crop,tikz]{standalone}
 
 \usetikzlibrary{positioning}
 
@@ -93,10 +90,10 @@
 	\draw[-stealth, thick] (hh5) -- (o1);
 	\draw[-stealth, thick] (hh5) -- (o2);
 	
-	\draw[-stealth, double, dashed, thick] (5.5,0) -- node[above] {dropout} (8.6, 0);
+	\draw[-stealth, thick] (7,0) -- node[above,font=\Large] {dropout} (9.5, 0);
 	
 	
-	%%% BOUNDARY %%%
+	%%% Boundary %%%
 	
 	\node[circle, draw, thick, red, fill=red!10, right=15em of hh1] (i1) {};
 	\node[circle, draw, thick, red, fill=red!10, above=2em of i1] (i2) {};
@@ -104,8 +101,8 @@
 	\node[circle, draw, thick, below=2em of i1] (i4) {};
 	\node[circle, draw, thick, below=2em of i4] (i5) {};
 	
-	\node[red] (icr) at (i1) {$\mathlarger{\mathlarger{\mathlarger{\mathlarger{\mathlarger{\bm{\times}}}}}}$};
-	\node[red] (icr) at (i2) {$\mathlarger{\mathlarger{\mathlarger{\mathlarger{\mathlarger{\bm{\times}}}}}}$};
+	\node[red,font=\huge] (icr) at (i1) {$\times$};
+	\node[red,font=\huge] (icr) at (i2) {$\times$};
 	
 	\node[circle, draw, thick, red, fill=red!10, right=4em of i1] (h1) {};
 	\node[circle, draw, thick, right=4em of i2] (h2) {};
@@ -113,9 +110,9 @@
 	\node[circle, draw, thick, red, fill=red!10, right=4em of i4] (h4) {};
 	\node[circle, draw, thick, right=4em of i5] (h5) {};
 	
-	\node[red] (icr) at (h1) {$\mathlarger{\mathlarger{\mathlarger{\mathlarger{\mathlarger{\bm{\times}}}}}}$};
-	\node[red] (icr) at (h3) {$\mathlarger{\mathlarger{\mathlarger{\mathlarger{\mathlarger{\bm{\times}}}}}}$};
-	\node[red] (icr) at (h4) {$\mathlarger{\mathlarger{\mathlarger{\mathlarger{\mathlarger{\bm{\times}}}}}}$};
+	\node[red,font=\huge] (icr) at (h1) {$\times$};
+	\node[red,font=\huge] (icr) at (h3) {$\times$};
+	\node[red,font=\huge] (icr) at (h4) {$\times$};
 	
 	\node[circle, draw, thick, right=4em of h1] (hh1) {};
 	\node[circle, draw, thick, red, fill=red!10, right=4em of h2] (hh2) {};
@@ -123,8 +120,8 @@
 	\node[circle, draw, thick, red, fill=red!10, right=4em of h4] (hh4) {};
 	\node[circle, draw, thick, right=4em of h5] (hh5) {};
 	
-	\node[red] (icr) at (hh2) {$\mathlarger{\mathlarger{\mathlarger{\mathlarger{\mathlarger{\bm{\times}}}}}}$};
-	\node[red] (icr) at (hh4) {$\mathlarger{\mathlarger{\mathlarger{\mathlarger{\mathlarger{\bm{\times}}}}}}$};
+	\node[red,font=\huge] (icr) at (hh2) {$\times$};
+	\node[red,font=\huge] (icr) at (hh4) {$\times$};
 	
 	\node[circle, draw, thick, right=4em of hh2] (o1) {};
 	\node[circle, draw, thick, right=4em of hh4] (o2) {};
